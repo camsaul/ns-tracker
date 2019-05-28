@@ -1,0 +1,1017 @@
+{:dependencies
+ {metabase.query-processor
+  #{metabase.query-processor.middleware.expand-macros metabase.query-processor.middleware.bind-effective-timezone metabase.query-processor.middleware.resolve-joins
+    metabase.query-processor.middleware.driver-specific metabase.query-processor.middleware.catch-exceptions metabase.query-processor.middleware.splice-params-in-response schema.core
+    metabase.query-processor.middleware.async metabase.query-processor.middleware.format-rows metabase.query-processor.middleware.add-row-count-and-status
+    metabase.query-processor.middleware.add-implicit-joins metabase.query-processor.middleware.resolve-fields metabase.query-processor.middleware.normalize-query
+    metabase.query-processor.middleware.validate metabase.driver metabase.query-processor.middleware.resolve-source-table metabase.query-processor.middleware.annotate
+    metabase.query-processor.middleware.process-userland-query metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing metabase.query-processor.middleware.cache
+    metabase.query-processor.middleware.add-implicit-clauses metabase.query-processor.middleware.check-features metabase.query-processor.middleware.add-settings
+    metabase.query-processor.middleware.add-dimension-projections metabase.query-processor.middleware.mbql-to-native metabase.query-processor.middleware.results-metadata
+    metabase.query-processor.middleware.auto-bucket-datetimes metabase.query-processor.middleware.resolve-database metabase.query-processor.middleware.parameters metabase.util
+    metabase.query-processor.middleware.constraints metabase.query-processor.middleware.permissions metabase.query-processor.middleware.limit metabase.query-processor.middleware.dev
+    metabase.mbql.schema metabase.driver.util metabase.query-processor.middleware.log metabase.util.i18n clojure.data metabase.query-processor.middleware.store
+    metabase.query-processor.middleware.cumulative-aggregations metabase.query-processor.middleware.resolve-driver metabase.query-processor.middleware.async-wait
+    metabase.query-processor.middleware.desugar metabase.query-processor.middleware.wrap-value-literals metabase.query-processor.middleware.fetch-source-query medley.core
+    metabase.query-processor.middleware.binning},
+  metabase.query-processor.middleware.expand-macros
+  #{metabase.query-processor.interface schema.core metabase.models.metric metabase.mbql.util clojure.tools.logging metabase.util puppetlabs.i18n.core toucan.db metabase.mbql.schema
+    metabase.models.segment},
+  metabase.api.user
+  #{honeysql.helpers schema.core metabase.models.permissions-group metabase.util.schema metabase.api.session metabase.integrations.ldap metabase.util compojure.core metabase.models.user
+    cemerick.friend.credentials metabase.email.messages toucan.db metabase.util.i18n metabase.api.common toucan.hydrate},
+  metabase.automagic-dashboards.populate
+  #{metabase.query-processor.util metabase.models.collection clojure.tools.logging metabase.util metabase.models.card toucan.db metabase.automagic-dashboards.filters metabase.util.i18n clojure.string
+    metabase.api.common},
+  metabase.models.setting.cache
+  #{clojure.core.memoize clojure.java.jdbc honeysql.core clojure.tools.logging clojure.core metabase.util.honeysql-extensions metabase.util metabase.db toucan.db metabase.util.i18n},
+  metabase.driver.sql-jdbc.sync #{metabase.driver.sql-jdbc.connection clojure.java.jdbc metabase.driver clojure.tools.logging clojure.set metabase.util clojure.string},
+  metabase.events.dependencies #{metabase.models.metric clojure.tools.logging clojure.core.async metabase.models.dependency metabase.models.card metabase.events},
+  metabase.api.notify #{metabase.models.table compojure.core metabase.models.database metabase.sync metabase.api.common},
+  metabase.logger #{amalloy.ring-buffer clj-time.core clj-time.format clj-time.coerce clojure.string},
+  metabase.models.view-log #{toucan.models metabase.models.interface metabase.util.date metabase.util},
+  metabase.email #{schema.core postal.support metabase.util.schema clojure.tools.logging postal.core metabase.util metabase.models.setting metabase.util.i18n},
+  metabase.util.export #{clojure.data.csv cheshire.core dk.ative.docjure.spreadsheet},
+  metabase.api.revision #{schema.core metabase.api.card compojure.core metabase.models.revision metabase.models.card toucan.db metabase.api.common metabase.models.dashboard},
+  metabase.sync.analyze.fingerprint.insights #{redux.core kixi.stats.core clj-time.core metabase.models.field kixi.stats.math clj-time.coerce metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.query-processor.util #{buddy.core.hash schema.core metabase.util.schema buddy.core.codecs cheshire.core clojure.string},
+  metabase.events.metabot-lifecycle #{metabase.metabot clojure.tools.logging clojure.core.async metabase.events},
+  metabase.mbql.predicates #{schema.core metabase.mbql.schema},
+  metabase.models.collection-revision #{toucan.models metabase.util.date metabase.util toucan.db metabase.util.i18n},
+  metabase.public-settings
+  #{metabase.config metabase.public-settings.metastore clojure.tools.logging metabase.util metabase.models.setting toucan.db metabase.util.password metabase.driver.util metabase.util.i18n
+    clojure.string metabase.models.common metabase.types},
+  metabase.driver.sql-jdbc.connection
+  #{metabase.db.connection-pool metabase.util.ssh clojure.java.jdbc metabase.driver clojure.tools.logging metabase.util toucan.db metabase.models.database metabase.util.i18n},
+  metabase.query-processor.middleware.driver-specific #{metabase.driver},
+  metabase.query-processor.middleware.catch-exceptions #{metabase.util schema.utils},
+  metabase.driver.sql-jdbc
+  #{metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection clojure.java.jdbc metabase.driver metabase.driver.sql.query-processor metabase.util.honeysql-extensions
+    metabase.driver.sql.util.unprepare metabase.driver.sql-jdbc.execute},
+  metabase.query-processor.middleware.splice-params-in-response #{metabase.driver},
+  metabase.sync.sync-metadata
+  #{schema.core metabase.sync.sync-metadata.fks metabase.sync.sync-metadata.metabase-metadata metabase.sync.interface metabase.sync.util metabase.sync.sync-metadata.tables
+    metabase.sync.sync-metadata.fields metabase.util.i18n metabase.sync.sync-metadata.sync-timezone},
+  metabase.api.ldap #{metabase.util.schema metabase.integrations.ldap clojure.tools.logging clojure.set compojure.core metabase.models.setting metabase.api.common},
+  metabase.task.send-anonymous-stats
+  #{clojurewerkz.quartzite.jobs metabase.public-settings clojure.tools.logging metabase.util.stats clojurewerkz.quartzite.triggers clojurewerkz.quartzite.schedule.cron metabase.task
+    metabase.util.i18n},
+  metabase.api.segment
+  #{schema.core metabase.models.interface metabase.util.schema clojure.tools.logging metabase.util compojure.core metabase.models.revision toucan.db metabase.util.i18n clojure.data
+    metabase.api.common metabase.models.segment metabase.related toucan.hydrate metabase.events},
+  metabase.query-processor.middleware.async #{metabase.config clojure.tools.logging metabase.async.util clojure.core.async metabase.util.date metabase.util.i18n},
+  metabase.query-processor.middleware.format-rows #{metabase.util.date},
+  metabase.config #{clojure.java.shell clojure.java.io clojure.string environ.core},
+  metabase.plugins.lazy-loaded-driver
+  #{metabase.util.ssh metabase.driver clojure.tools.logging metabase.driver.common metabase.util.date metabase.util metabase.util.i18n metabase.plugins.init-steps},
+  metabase.models.permissions-revision #{toucan.models metabase.util.date metabase.util toucan.db metabase.util.i18n},
+  metabase.metabot.websocket
+  #{manifold.stream metabase.metabot.instance manifold.deferred metabase.integrations.slack clojure.tools.logging metabase.util aleph.http metabase.metabot.events throttle.core metabase.util.i18n},
+  metabase.query-processor.middleware.add-row-count-and-status #{metabase.query-processor.util metabase.query-processor.interface},
+  metabase.models.metric
+  #{toucan.models schema.core metabase.models.interface metabase.mbql.util metabase.util.schema metabase.util metabase.models.revision metabase.models.dependency toucan.db metabase.util.i18n
+    toucan.hydrate medley.core},
+  metabase.mbql.util.match #{clojure.core.match clojure.walk},
+  metabase.events.view-log #{metabase.models.view-log clojure.tools.logging clojure.core.async toucan.db metabase.events},
+  metabase.models.interface
+  #{clojure.core.memoize toucan.models schema.core toucan.util clojure.tools.logging metabase.util.date metabase.util metabase.mbql.normalize taoensso.nippy cheshire.core metabase.util.cron
+    metabase.util.i18n metabase.util.encryption},
+  metabase.query-processor.middleware.add-implicit-joins
+  #{metabase.models.table schema.core metabase.mbql.util metabase.util.schema metabase.driver metabase.query-processor.store metabase.models.field metabase.util metabase.db toucan.db
+    metabase.mbql.schema metabase.util.i18n},
+  metabase.models.field-values #{toucan.models schema.core metabase.util.schema clojure.tools.logging metabase.util toucan.db metabase.util.i18n},
+  metabase.models.query #{toucan.models metabase.util.honeysql-extensions metabase.util metabase.mbql.normalize metabase.db toucan.db cheshire.core},
+  metabase.async.api-response
+  #{compojure.response clojure.tools.logging clojure.core.async metabase.util.date metabase.util metabase.middleware.exceptions cheshire.core clojure.java.io ring.core.protocols metabase.util.i18n
+    ring.util.response},
+  metabase.task.sync-databases
+  #{clojurewerkz.quartzite.jobs metabase.sync.sync-metadata schema.core clojurewerkz.quartzite.conversion metabase.sync.analyze clojure.tools.logging clojurewerkz.quartzite.triggers metabase.util
+    metabase.sync.field-values toucan.db metabase.util.cron clojurewerkz.quartzite.schedule.cron metabase.task metabase.models.database metabase.util.i18n},
+  metabase.util.infer-spaces #{clojure.java.io clojure.string},
+  metabase.models.dimension #{toucan.models metabase.util},
+  metabase.models.task-history #{toucan.models schema.core metabase.models.interface metabase.util.schema clojure.tools.logging metabase.util.date metabase.util toucan.db metabase.util.i18n},
+  metabase.cmd.reset-password #{metabase.models.user metabase.db toucan.db metabase.util.i18n},
+  metabase.util.ssh #{clojure.tools.logging metabase.util clojure.string},
+  metabase.metabot.instance #{honeysql.core clojure.tools.logging metabase.util.date metabase.util metabase.models.setting toucan.db metabase.util.i18n},
+  metabase.api.embed
+  #{schema.core metabase.util.schema clojure.tools.logging clojure.set metabase.util compojure.core metabase.models.dashboard-card metabase.api.public metabase.models.card toucan.db
+    metabase.api.dataset metabase.util.i18n clojure.string metabase.api.common medley.core metabase.util.embed metabase.models.dashboard},
+  metabase.mbql.util #{schema.core metabase.mbql.util.match metabase.util.schema metabase.util.date metabase.util metabase.mbql.schema metabase.util.i18n clojure.string},
+  metabase.models.revision.diff #{clojure.core.match clojure.string},
+  metabase.models.metric-important-field #{toucan.models metabase.models.interface metabase.util},
+  metabase.server #{metabase.config ring.adapter.jetty clojure.tools.logging clojure.core metabase.util metabase.util.i18n clojure.string medley.core},
+  metabase.api.metric
+  #{metabase.models.table schema.core metabase.models.metric metabase.models.interface metabase.util.schema clojure.tools.logging metabase.util compojure.core metabase.models.revision toucan.db
+    metabase.util.i18n clojure.data metabase.api.common metabase.related toucan.hydrate metabase.events},
+  metabase.query-processor.middleware.resolve-fields #{metabase.mbql.util metabase.query-processor.store metabase.models.field metabase.util toucan.db},
+  metabase.models.permissions-group #{toucan.models clojure.tools.logging metabase.util metabase.models.setting toucan.db metabase.util.i18n clojure.string},
+  metabase.api.slack #{schema.core metabase.config metabase.util.schema metabase.integrations.slack compojure.core metabase.models.setting metabase.api.common},
+  metabase.api.pulse
+  #{metabase.query-processor metabase.email schema.core metabase.models.interface metabase.pulse.render metabase.models.collection metabase.util.schema metabase.integrations.slack metabase.pulse
+    clojure.tools.logging metabase.models.pulse metabase.util.urls metabase.models.pulse-channel metabase.util compojure.core metabase.models.card hiccup.core toucan.db metabase.util.i18n
+    metabase.api.common toucan.hydrate metabase.events},
+  metabase.sync.analyze
+  #{schema.core clojure.tools.logging metabase.sync.analyze.classify metabase.util.date metabase.models.field metabase.sync.analyze.fingerprint metabase.util metabase.sync.interface
+    metabase.sync.util toucan.db metabase.util.i18n},
+  metabase.query-processor.middleware.validate #{metabase.mbql.schema},
+  metabase.api.tiles #{metabase.query-processor metabase.mbql.util metabase.util.schema metabase.util compojure.core metabase.mbql.normalize cheshire.core metabase.util.i18n metabase.api.common},
+  metabase.util.schema #{schema.core schema.macros metabase.util cheshire.core metabase.util.password metabase.util.i18n clojure.string schema.utils medley.core},
+  metabase.driver
+  #{schema.core metabase.util.schema clojure.tools.logging metabase.plugins.classloader metabase.util.date metabase.util metabase.models.setting toucan.db metabase.util.i18n clojure.string},
+  metabase.models.query.permissions
+  #{metabase.query-processor.util metabase.models.table schema.core metabase.models.interface metabase.mbql.util metabase.util.schema clojure.tools.logging metabase.util metabase.models.permissions
+    toucan.db metabase.util.i18n metabase.api.common},
+  metabase.query-processor.middleware.annotate
+  #{metabase.mbql.predicates schema.core metabase.mbql.util metabase.util.schema metabase.driver metabase.query-processor.store metabase.driver.common metabase.util metabase.mbql.schema
+    metabase.util.i18n clojure.string metabase.models.humanization},
+  metabase.models.params #{schema.core metabase.mbql.util metabase.util.schema clojure.tools.logging clojure.set metabase.util metabase.db toucan.db metabase.util.i18n toucan.hydrate},
+  metabase.events.notifications
+  #{metabase.models.metric clojure.tools.logging clojure.set clojure.core.async metabase.models.pulse metabase.models.dashboard-card metabase.models.user metabase.models.dependency
+    metabase.models.card metabase.email.messages metabase.models.pulse-card toucan.db metabase.models.segment metabase.events metabase.models.dashboard},
+  metabase.query-processor.middleware.process-userland-query
+  #{metabase.query-processor.util metabase.models.query clojure.tools.logging metabase.util.date metabase.util toucan.db metabase.models.query-execution metabase.util.i18n medley.core},
+  metabase.api.session
+  #{metabase.public-settings clj-http.client schema.core metabase.config metabase.util.schema metabase.integrations.ldap clojure.tools.logging metabase.util compojure.core metabase.models.user
+    cemerick.friend.credentials metabase.models.setting metabase.email.messages metabase.middleware.session toucan.db cheshire.core metabase.models.session metabase.util.password throttle.core
+    metabase.util.i18n metabase.api.common metabase.events},
+  metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing #{schema.core metabase.mbql.util metabase.mbql.schema},
+  metabase.cmd.endpoint-dox #{metabase.config metabase.util clojure.java.io clojure.string},
+  metabase.api.card
+  #{metabase.models.view-log metabase.query-processor.async metabase.query-processor.util metabase.public-settings metabase.models.table schema.core metabase.models.interface metabase.models.query
+    metabase.models.collection metabase.util.schema metabase.models.query.permissions metabase.query-processor.middleware.cache metabase.models.card-favorite clojure.tools.logging metabase.async.util
+    metabase.query-processor.middleware.results-metadata clojure.core.async metabase.models.pulse metabase.util compojure.core metabase.query-processor.middleware.constraints
+    metabase.sync.analyze.query-results metabase.models.card metabase.email.messages toucan.db cheshire.core metabase.models.database metabase.api.dataset metabase.util.i18n metabase.api.common
+    metabase.related toucan.hydrate medley.core metabase.events},
+  metabase.driver.sql.query-processor
+  #{honeysql.helpers metabase.models.table metabase.query-processor.interface schema.core metabase.mbql.util metabase.util.schema metabase.driver metabase.query-processor.middleware.annotate
+    metabase.query-processor.store honeysql.format honeysql.core clojure.tools.logging metabase.util.honeysql-extensions metabase.models.field metabase.util metabase.mbql.schema metabase.util.i18n
+    clojure.string},
+  metabase.api.activity
+  #{metabase.models.view-log metabase.models.interface clojure.set compojure.core metabase.models.card toucan.db metabase.models.activity metabase.api.common toucan.hydrate
+    metabase.models.dashboard},
+  metabase.integrations.ldap #{metabase.models.permissions-group clojure.set metabase.util metabase.models.user metabase.models.setting toucan.db metabase.util.i18n clojure.string clj-ldap.client},
+  metabase.query-processor.store #{metabase.models.table schema.core metabase.util.schema metabase.models.field metabase.util metabase.models.database metabase.util.i18n},
+  metabase.integrations.slack
+  #{clojure.core.memoize clj-http.client schema.core metabase.config metabase.util.schema clojure.tools.logging metabase.util metabase.models.setting cheshire.core clojure.java.io
+    metabase.util.i18n},
+  metabase.sync.analyze.classifiers.no-preview-display #{schema.core metabase.sync.interface},
+  metabase.pulse
+  #{metabase.query-processor metabase.email schema.core metabase.pulse.render metabase.integrations.slack clojure.tools.logging metabase.models.pulse metabase.util.urls metabase.util
+    metabase.util.ui-logic metabase.models.card metabase.email.messages toucan.db metabase.driver.util metabase.util.i18n},
+  metabase.metabot #{metabase.metabot.websocket metabase.metabot.instance metabase.integrations.slack clojure.tools.logging metabase.models.setting metabase.util.i18n},
+  metabase.query-processor.middleware.cache
+  #{metabase.query-processor.util metabase.public-settings metabase.config clojure.tools.logging metabase.plugins.classloader metabase.util.date metabase.util metabase.util.i18n
+    metabase.query-processor.middleware.cache-backend.interface},
+  metabase.models.card-favorite #{toucan.models metabase.util},
+  metabase.query-processor.middleware.add-implicit-clauses
+  #{schema.core metabase.mbql.util metabase.util.schema metabase.query-processor.store honeysql.core metabase.models.field metabase.util metabase.db toucan.db metabase.mbql.schema
+    metabase.util.i18n},
+  metabase.query-processor.middleware.check-features #{metabase.mbql.util metabase.driver metabase.util metabase.util.i18n},
+  metabase.mbql.schema.helpers #{schema.core clojure.string},
+  metabase.middleware.security #{metabase.config metabase.middleware.util metabase.util.date metabase.models.setting metabase.util.i18n clojure.string},
+  metabase.core
+  #{metabase.config metabase.core.initialization-status metabase.server metabase.metabot clojure.tools.logging metabase.sample-data metabase.util metabase.models.user metabase.plugins
+    metabase.models.setting metabase.db toucan.db metabase.task metabase.driver.util metabase.util.i18n metabase.setup metabase.events metabase.handler},
+  metabase.middleware.util #{clojure.string},
+  metabase.api.automagic-dashboards
+  #{metabase.models.table schema.core metabase.models.metric metabase.models.query ring.util.codec metabase.util.schema metabase.models.query.permissions metabase.models.field compojure.core
+    metabase.automagic-dashboards.core buddy.core.codecs metabase.models.card metabase.models.permissions cheshire.core metabase.models.database metabase.util.i18n metabase.automagic-dashboards.rules
+    metabase.api.common metabase.models.segment metabase.automagic-dashboards.comparison},
+  metabase.query-processor.middleware.cache-backend.db
+  #{metabase.public-settings clojure.tools.logging metabase.util.date metabase.util taoensso.nippy toucan.db metabase.query-processor.middleware.cache-backend.interface metabase.models.query-cache},
+  metabase.query-processor.middleware.add-dimension-projections
+  #{schema.core metabase.models.dimension metabase.mbql.util metabase.util.schema metabase.util toucan.db metabase.mbql.schema toucan.hydrate},
+  metabase.async.util #{schema.core clojure.tools.logging clojure.core.async metabase.util.i18n},
+  metabase.sync.sync-metadata.fks
+  #{metabase.models.table schema.core metabase.sync.fetch-metadata clojure.tools.logging metabase.models.field metabase.util metabase.sync.interface metabase.sync.util toucan.db clojure.string},
+  metabase.sync.analyze.classify
+  #{metabase.models.table schema.core metabase.sync.analyze.classifiers.no-preview-display clojure.tools.logging metabase.models.field metabase.util metabase.sync.analyze.classifiers.text-fingerprint
+    metabase.sync.analyze.classifiers.category metabase.sync.interface metabase.sync.analyze.classifiers.name metabase.sync.util toucan.db clojure.data},
+  metabase.plugins.classloader #{clojure.tools.logging metabase.util dynapath.util metabase.util.i18n},
+  metabase.sample-data #{clojure.tools.logging toucan.db clojure.java.io metabase.models.database metabase.util.i18n clojure.string metabase.sync},
+  metabase.driver.common #{metabase.driver metabase.query-processor.store clj-time.core clojure.tools.logging clj-time.format metabase.util clj-time.coerce metabase.driver.util metabase.util.i18n},
+  metabase.models.permissions-group-membership #{toucan.models metabase.models.permissions-group metabase.util toucan.db metabase.util.i18n},
+  metabase.query-processor.middleware.mbql-to-native #{metabase.query-processor.interface metabase.driver clojure.tools.logging metabase.util metabase.util.i18n},
+  metabase.api.table
+  #{metabase.models.table schema.core metabase.models.interface metabase.models.field-values metabase.mbql.util metabase.util.schema metabase.driver clojure.tools.logging metabase.models.field
+    metabase.util compojure.core metabase.sync.field-values metabase.models.card toucan.db metabase.mbql.schema metabase.driver.util metabase.util.i18n metabase.sync metabase.api.common
+    metabase.related toucan.hydrate medley.core},
+  metabase.sync.sync-metadata.metabase-metadata
+  #{metabase.models.table schema.core metabase.sync.fetch-metadata metabase.util.schema metabase.driver clojure.tools.logging metabase.models.field metabase.util metabase.sync.interface
+    metabase.sync.util toucan.db metabase.driver.util clojure.string},
+  metabase.util.honeysql-extensions #{schema.core metabase.config honeysql.format honeysql.core metabase.util metabase.util.pretty clojure.string},
+  metabase.sync.sync-metadata.fields.sync-metadata
+  #{schema.core metabase.util.schema clojure.tools.logging metabase.models.field metabase.util metabase.sync.interface metabase.sync.util metabase.sync.sync-metadata.fields.common toucan.db
+    metabase.util.i18n clojure.string},
+  metabase.api.search
+  #{honeysql.helpers schema.core metabase.models.metric metabase.models.collection metabase.util.schema metabase.models.card-favorite metabase.util.honeysql-extensions metabase.models.pulse
+    metabase.util compojure.core metabase.models.dashboard-favorite metabase.models.card toucan.db clojure.string metabase.api.common metabase.models.segment metabase.models.dashboard},
+  metabase.plugins.initialize #{metabase.plugins.lazy-loaded-driver clojure.tools.logging metabase.util metabase.plugins.dependencies metabase.util.i18n metabase.plugins.init-steps},
+  metabase.query-processor.middleware.results-metadata
+  #{buddy.core.hash ring.util.codec metabase.driver clojure.tools.logging metabase.util metabase.sync.analyze.query-results toucan.db cheshire.core metabase.util.i18n clojure.walk
+    metabase.util.encryption},
+  metabase.models.pulse
+  #{toucan.models schema.core metabase.models.interface metabase.util.schema clojure.tools.logging metabase.models.pulse-channel metabase.util metabase.models.pulse-channel-recipient
+    metabase.models.card metabase.models.permissions metabase.models.pulse-card toucan.db metabase.util.i18n clojure.string toucan.hydrate medley.core metabase.events},
+  metabase.util.urls #{metabase.public-settings},
+  metabase.events.revision
+  #{metabase.models.metric clojure.tools.logging clojure.core.async metabase.models.revision metabase.models.card metabase.models.segment metabase.events metabase.models.dashboard},
+  metabase.util.stats
+  #{metabase.email metabase.public-settings metabase.models.table clj-http.client metabase.config metabase.models.metric metabase.models.collection metabase.models.permissions-group metabase.driver
+    metabase.api.session metabase.integrations.slack clojure.tools.logging metabase.models.pulse metabase.models.pulse-channel metabase.models.field metabase.util metabase.models.dashboard-card
+    metabase.models.user metabase.models.card metabase.models.pulse-card toucan.db metabase.models.query-execution metabase.models.database clojure.string metabase.models.segment
+    metabase.models.humanization metabase.models.query-cache medley.core metabase.models.dashboard},
+  metabase.models.pulse-channel
+  #{toucan.models metabase.models.interface clojure.set cheshire.generate metabase.util metabase.models.pulse-channel-recipient metabase.models.user toucan.db medley.core},
+  metabase.plugins.jdbc-proxy #{clojure.tools.logging metabase.plugins.classloader metabase.util metabase.util.i18n},
+  metabase.util.date #{schema.core metabase.util.schema clj-time.core clojure.tools.logging clj-time.format metabase.util clj-time.coerce metabase.util.i18n clojure.math.numeric-tower},
+  metabase.query-processor.middleware.resolve-database #{metabase.query-processor.store metabase.util toucan.db metabase.mbql.schema metabase.models.database metabase.util.i18n},
+  metabase.cmd.driver-methods #{clojure.tools.namespace.find clojure.java.classpath metabase.util clojure.string},
+  metabase.query-processor.middleware.parameters
+  #{metabase.query-processor.interface metabase.driver clojure.tools.logging metabase.query-processor.middleware.parameters.mbql metabase.util metabase.driver.sql.util.unprepare
+    metabase.query-processor.middleware.parameters.sql clojure.data},
+  metabase.models.field
+  #{clojure.core.memoize toucan.models metabase.models.interface metabase.models.field-values metabase.models.dimension metabase.util metabase.models.permissions toucan.db clojure.string
+    toucan.hydrate metabase.models.humanization},
+  metabase.util
+  #{clojure.tools.namespace.find metabase.config ring.util.codec clojure.tools.logging colorize.core clojure.java.classpath clojure.pprint metabase.util.i18n clojure.string clojure.data clojure.walk
+    medley.core clojure.math.numeric-tower},
+  metabase.api.dashboard
+  #{metabase.automagic-dashboards.populate metabase.query-processor.util schema.core metabase.models.interface metabase.models.query metabase.models.collection metabase.util.schema
+    clojure.tools.logging metabase.util compojure.core metabase.query-processor.middleware.constraints metabase.models.dashboard-card metabase.models.revision metabase.models.dashboard-favorite
+    metabase.models.card toucan.db metabase.api.common metabase.related toucan.hydrate metabase.events metabase.models.dashboard},
+  metabase.sync.analyze.classifiers.category #{schema.core metabase.models.field-values metabase.util.schema clojure.tools.logging metabase.models.field metabase.sync.interface metabase.sync.util},
+  metabase.sync.interface #{metabase.models.table schema.core metabase.util.schema clj-time.core metabase.models.field metabase.util metabase.models.database},
+  metabase.sync.analyze.classifiers.name
+  #{schema.core metabase.config metabase.util.schema clojure.tools.logging metabase.util metabase.sync.interface metabase.sync.util metabase.models.database clojure.string},
+  metabase.models.pulse-channel-recipient #{toucan.models},
+  metabase.sync.sync-metadata.fields.fetch-metadata
+  #{schema.core metabase.sync.fetch-metadata metabase.models.field metabase.util metabase.sync.interface metabase.sync.sync-metadata.fields.common toucan.db medley.core},
+  metabase.api.routes
+  #{metabase.api.user metabase.api.notify metabase.api.revision metabase.api.alert metabase.api.ldap metabase.api.segment metabase.middleware.auth metabase.api.embed metabase.api.metric
+    metabase.api.slack metabase.api.pulse metabase.api.field metabase.api.tiles metabase.api.session metabase.api.card metabase.api.activity metabase.api.automagic-dashboards metabase.api.table
+    metabase.api.search compojure.route metabase.api.setup metabase.api.dashboard compojure.core metabase.api.task metabase.api.public metabase.api.setting metabase.api.database
+    metabase.middleware.exceptions metabase.api.collection metabase.api.preview-embed metabase.api.dataset metabase.util.i18n metabase.api.util metabase.api.email metabase.api.permissions
+    metabase.api.geojson},
+  metabase.models.dashboard-card
+  #{toucan.models schema.core metabase.models.interface metabase.util.schema clojure.set metabase.util metabase.models.dashboard-card-series metabase.models.card metabase.db toucan.db toucan.hydrate
+    metabase.events},
+  metabase.models.user
+  #{metabase.public-settings toucan.models schema.core metabase.models.collection metabase.models.permissions-group metabase.util.schema clojure.tools.logging
+    metabase.models.permissions-group-membership metabase.util.date metabase.util cemerick.friend.credentials metabase.email.messages metabase.models.permissions toucan.db metabase.util.i18n
+    clojure.string clojure.data},
+  metabase.api.task #{schema.core metabase.models.task-history metabase.util.schema compojure.core toucan.db metabase.task metabase.util.i18n metabase.api.common},
+  metabase.metabot.slack #{metabase.integrations.slack clojure.tools.logging metabase.util.i18n},
+  metabase.plugins
+  #{clojure.tools.logging metabase.plugins.classloader metabase.plugins.initialize metabase.util metabase.plugins.files clojure.java.io metabase.util.i18n clojure.string yaml.core environ.core},
+  metabase.models.revision #{toucan.models metabase.models.revision.diff metabase.util.date metabase.util metabase.models.user toucan.db metabase.util.i18n clojure.data toucan.hydrate},
+  metabase.sync.field-values
+  #{schema.core metabase.models.field-values clojure.tools.logging metabase.models.field metabase.util metabase.sync.interface metabase.sync.util toucan.db metabase.util.i18n},
+  metabase.driver.mysql
+  #{metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection schema.core metabase.util.ssh metabase.driver metabase.driver.sql.query-processor clj-time.core honeysql.core
+    clojure.tools.logging metabase.driver.common clojure.set metabase.util.honeysql-extensions clj-time.format metabase.util.date metabase.driver.sql-jdbc.common clj-time.coerce
+    metabase.driver.sql-jdbc.execute metabase.util.i18n clojure.string metabase.driver.sql metabase.db.spec},
+  metabase.cmd #{metabase.config metabase.util.date metabase.util metabase.db clojure.string},
+  metabase.events.activity-feed
+  #{metabase.query-processor metabase.models.table metabase.mbql.util clojure.tools.logging clojure.core.async metabase.util metabase.models.card toucan.db metabase.models.activity metabase.util.i18n
+    metabase.events metabase.models.dashboard},
+  metabase.models.dashboard-favorite #{toucan.models},
+  metabase.query-processor.middleware.permissions
+  #{schema.core metabase.models.interface metabase.util.schema metabase.models.query.permissions metabase.models.card metabase.models.permissions toucan.db metabase.util.i18n metabase.api.common},
+  metabase.automagic-dashboards.core
+  #{metabase.automagic-dashboards.populate metabase.query-processor.util metabase.models.table schema.core metabase.models.metric metabase.models.interface metabase.models.query metabase.mbql.util
+    ring.util.codec metabase.driver kixi.stats.core clj-time.core clojure.math.combinatorics clojure.tools.logging metabase.sync.analyze.classify clj-time.format metabase.util.date
+    metabase.models.field metabase.util metabase.mbql.normalize kixi.stats.math buddy.core.codecs metabase.models.card toucan.db cheshire.core metabase.models.database
+    metabase.automagic-dashboards.filters metabase.util.i18n clojure.string clojure.walk metabase.automagic-dashboards.rules metabase.models.segment metabase.related medley.core},
+  metabase.sync.util
+  #{metabase.models.table metabase.query-processor.interface buddy.core.hash schema.core metabase.models.task-history ring.util.codec metabase.util.schema metabase.driver clj-time.core
+    clojure.tools.logging metabase.util.date metabase.util metabase.sync.interface taoensso.nippy clj-time.coerce toucan.db metabase.driver.util metabase.util.i18n clojure.string medley.core
+    clojure.math.numeric-tower metabase.events},
+  metabase.models.dashboard-card-series #{toucan.models},
+  metabase.util.pretty #{clojure.pprint},
+  metabase.task.upgrade-checks
+  #{clojurewerkz.quartzite.jobs metabase.public-settings clj-http.client metabase.config clojure.tools.logging clojurewerkz.quartzite.triggers cheshire.core clojurewerkz.quartzite.schedule.cron
+    metabase.task metabase.util.i18n},
+  metabase.query-processor.middleware.parameters.sql
+  #{metabase.query-processor.middleware.parameters.dates schema.core metabase.util.schema metabase.driver metabase.driver.sql.query-processor honeysql.core metabase.util.date metabase.models.field
+    toucan.db metabase.driver.util metabase.util.i18n clojure.string metabase.driver.sql medley.core},
+  metabase.query-processor.middleware.limit #{metabase.query-processor.util metabase.query-processor.interface metabase.mbql.util},
+  metabase.sync.sync-metadata.fields.sync-instances
+  #{schema.core metabase.util.schema clojure.tools.logging metabase.models.field metabase.util metabase.sync.interface metabase.sync.sync-metadata.fields.fetch-metadata metabase.sync.util
+    metabase.sync.sync-metadata.fields.common toucan.db metabase.util.i18n metabase.models.humanization},
+  metabase.api.public
+  #{schema.core metabase.models.dimension metabase.mbql.util metabase.api.field metabase.util.schema metabase.models.params metabase.api.card metabase.async.util clojure.core.async
+    metabase.models.field metabase.util metabase.api.dashboard compojure.core metabase.models.dashboard-card metabase.mbql.normalize metabase.models.dashboard-card-series metabase.models.card
+    metabase.db toucan.db cheshire.core metabase.api.dataset metabase.util.i18n metabase.api.common toucan.hydrate medley.core metabase.util.embed metabase.models.dashboard},
+  metabase.api.setting #{metabase.util.schema compojure.core metabase.models.setting metabase.api.common},
+  metabase.models.dependency #{toucan.models clojure.set metabase.util.date toucan.db},
+  metabase.sync.analyze.query-results
+  #{metabase.sync.analyze.fingerprint.insights metabase.mbql.predicates schema.core redux.core metabase.util.schema metabase.util metabase.sync.interface metabase.sync.analyze.classifiers.name
+    metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.api.database
+  #{metabase.public-settings metabase.models.table metabase.sync.sync-metadata schema.core metabase.config metabase.models.interface metabase.models.field-values metabase.mbql.util
+    metabase.sync.analyze metabase.util.schema metabase.driver clojure.tools.logging metabase.sample-data metabase.api.table metabase.models.field metabase.util compojure.core
+    metabase.sync.field-values metabase.models.card metabase.models.permissions toucan.db metabase.util.cron metabase.mbql.schema metabase.models.database metabase.driver.util metabase.util.i18n
+    clojure.string metabase.api.common toucan.hydrate metabase.events},
+  metabase.sync.sync-metadata.tables
+  #{metabase.models.table schema.core metabase.sync.fetch-metadata clojure.tools.logging metabase.sync.sync-metadata.metabase-metadata metabase.util metabase.sync.interface metabase.sync.util
+    toucan.db metabase.util.i18n clojure.string clojure.data metabase.models.humanization},
+  metabase.sync.sync-metadata.fields.common #{schema.core metabase.util.schema metabase.sync.interface metabase.sync.util metabase.util.i18n clojure.string},
+  metabase.cmd.load-from-h2
+  #{metabase.models.view-log metabase.models.collection-revision metabase.models.table metabase.models.permissions-revision metabase.models.metric metabase.models.field-values
+    metabase.models.collection metabase.models.dimension clojure.java.jdbc metabase.models.metric-important-field metabase.models.permissions-group metabase.models.card-favorite
+    metabase.models.permissions-group-membership colorize.core metabase.models.pulse metabase.models.pulse-channel metabase.models.field metabase.util metabase.models.pulse-channel-recipient
+    metabase.models.dashboard-card metabase.models.user metabase.models.revision metabase.models.dashboard-favorite metabase.models.dashboard-card-series metabase.models.dependency
+    metabase.models.setting metabase.models.card metabase.db metabase.models.permissions metabase.models.pulse-card toucan.db metabase.models.session clojure.java.io metabase.models.activity
+    metabase.models.database metabase.util.i18n clojure.string metabase.models.segment metabase.db.migrations metabase.models.dashboard},
+  metabase.models.card
+  #{metabase.query-processor.util metabase.public-settings toucan.models metabase.models.interface metabase.models.field-values metabase.models.query metabase.mbql.util
+    metabase.models.query.permissions metabase.models.params clojure.tools.logging clojure.set metabase.util metabase.models.revision metabase.mbql.normalize metabase.models.dependency
+    metabase.models.permissions toucan.db metabase.util.i18n metabase.api.common},
+  metabase.email.messages
+  #{metabase.email metabase.util.export metabase.public-settings metabase.config metabase.pulse.render clojure.core.cache metabase.util.quotation clojure.tools.logging metabase.util.urls
+    metabase.util.date metabase.util stencil.core hiccup.core toucan.db metabase.util.i18n stencil.loader medley.core},
+  metabase.db
+  #{metabase.db.connection-pool schema.core metabase.config clojure.java.jdbc ring.util.codec metabase.util.schema clojure.tools.logging metabase.util.date metabase.util toucan.db clojure.java.io
+    metabase.util.i18n clojure.string clojure.walk metabase.db.spec},
+  metabase.plugins.dependencies #{clojure.tools.logging metabase.plugins.classloader metabase.util metabase.util.i18n},
+  metabase.task.send-pulses
+  #{clojurewerkz.quartzite.jobs clj-time.predicates schema.core metabase.models.task-history metabase.pulse clj-time.core clojure.tools.logging metabase.models.pulse metabase.models.pulse-channel
+    clojurewerkz.quartzite.triggers metabase.models.setting clojurewerkz.quartzite.schedule.cron metabase.task metabase.util.i18n},
+  metabase.models.permissions
+  #{toucan.models schema.core metabase.config metabase.models.permissions-revision metabase.models.interface metabase.models.permissions-group metabase.util.schema clojure.tools.logging
+    metabase.util.honeysql-extensions clojure.core.match metabase.util toucan.db metabase.util.i18n clojure.string clojure.data metabase.api.common medley.core},
+  metabase.driver.h2
+  #{metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection metabase.driver metabase.driver.sql.query-processor metabase.query-processor.store honeysql.core metabase.driver.common
+    metabase.util.honeysql-extensions metabase.util.date metabase.util metabase.driver.sql.util.unprepare metabase.db metabase.util.i18n clojure.string metabase.db.spec},
+  metabase.middleware.session
+  #{schema.core metabase.config metabase.core.initialization-status metabase.models.user metabase.db toucan.db metabase.models.session clojure.string metabase.api.common ring.util.response},
+  metabase.middleware.exceptions #{clojure.java.jdbc metabase.middleware.security clojure.tools.logging metabase.util metabase.util.i18n clojure.string},
+  metabase.models.pulse-card #{toucan.models},
+  metabase.models.session #{toucan.models metabase.util.date metabase.util toucan.db},
+  metabase.api.collection
+  #{schema.core metabase.models.interface metabase.models.collection metabase.util.schema metabase.api.card metabase.models.pulse metabase.util compojure.core metabase.models.card
+    metabase.models.permissions toucan.db clojure.string metabase.api.common toucan.hydrate metabase.models.dashboard},
+  metabase.util.cron #{schema.core metabase.util.schema clojure.string},
+  metabase.metabot.events #{clojure.tools.logging metabase.util metabase.metabot.slack clojure.edn cheshire.core metabase.metabot.command metabase.util.i18n clojure.string},
+  metabase.models.query-execution #{toucan.models schema.core metabase.util metabase.mbql.schema metabase.util.i18n},
+  metabase.models.activity
+  #{toucan.models metabase.models.metric metabase.models.interface metabase.models.pulse metabase.util.date metabase.util metabase.models.card toucan.db metabase.api.common metabase.models.segment
+    metabase.events metabase.models.dashboard},
+  metabase.api.preview-embed #{metabase.api.embed compojure.core metabase.api.common metabase.util.embed},
+  metabase.task
+  #{schema.core clojurewerkz.quartzite.scheduler clojure.java.jdbc clojure.tools.logging metabase.plugins.classloader metabase.util metabase.db toucan.db metabase.util.i18n clojure.string},
+  metabase.api.common.internal #{schema.core metabase.config metabase.util.schema clojure.tools.logging metabase.util metabase.util.i18n clojure.string medley.core},
+  metabase.mbql.schema #{schema.core metabase.mbql.util.match metabase.util.schema metabase.mbql.schema.helpers clojure.core clojure.set metabase.util.date metabase.util},
+  metabase.models.database
+  #{toucan.models metabase.models.interface metabase.models.permissions-group metabase.driver clojure.tools.logging metabase.plugins.classloader cheshire.generate metabase.util metabase.db
+    metabase.models.permissions toucan.db metabase.driver.util metabase.util.i18n metabase.api.common},
+  metabase.metabot.command
+  #{metabase.models.interface metabase.models.collection metabase.models.permissions-group metabase.pulse clojure.tools.logging metabase.util.urls metabase.util metabase.metabot.slack
+    metabase.models.card metabase.models.permissions clojure.edn toucan.db clojure.java.io metabase.util.i18n clojure.string metabase.api.common},
+  metabase.query-processor.middleware.log #{metabase.query-processor.interface clojure.tools.logging metabase.util},
+  metabase.driver.sql-jdbc.execute
+  #{metabase.query-processor.util metabase.driver.sql-jdbc.connection metabase.query-processor.interface clojure.java.jdbc metabase.mbql.util metabase.driver metabase.query-processor.store
+    clojure.tools.logging metabase.util.date metabase.util metabase.util.i18n},
+  metabase.util.i18n #{schema.core clojure.tools.logging cheshire.generate puppetlabs.i18n.core clojure.walk},
+  metabase.driver.sql #{schema.core metabase.driver metabase.driver.sql.query-processor honeysql.core},
+  metabase.events.last-login #{clojure.tools.logging clojure.core.async metabase.util.date metabase.models.user toucan.db metabase.events},
+  metabase.sync #{metabase.sync.sync-metadata schema.core metabase.sync.analyze metabase.sync.interface metabase.sync.field-values metabase.sync.util},
+  metabase.query-processor.middleware.store #{metabase.query-processor.store},
+  metabase.automagic-dashboards.rules
+  #{metabase.automagic-dashboards.populate metabase.query-processor.util schema.core metabase.util.schema schema.spec.core schema.coerce clojure.tools.logging metabase.util clojure.java.io
+    metabase.util.i18n clojure.string yaml.core},
+  metabase.api.util #{metabase.logger crypto.random metabase.util.schema metabase.util.stats compojure.core metabase.api.common},
+  metabase.task.follow-up-emails
+  #{clojurewerkz.quartzite.jobs metabase.models.view-log metabase.email metabase.public-settings clj-time.core clojure.tools.logging clojurewerkz.quartzite.triggers metabase.models.user
+    metabase.models.setting metabase.email.messages clj-time.coerce toucan.db clojurewerkz.quartzite.schedule.cron metabase.models.activity metabase.task metabase.util.i18n},
+  metabase.api.common
+  #{metabase.public-settings schema.core metabase.models.interface metabase.util.schema clojure.tools.logging metabase.util compojure.core toucan.db metabase.api.common.internal honeysql.types
+    metabase.util.i18n clojure.string medley.core},
+  metabase.query-processor.middleware.cumulative-aggregations #{schema.core metabase.mbql.util metabase.mbql.schema},
+  metabase.pulse.color #{schema.core cheshire.core metabase.util.i18n},
+  metabase.query-processor.middleware.resolve-driver #{metabase.driver metabase.driver.util metabase.util.i18n},
+  metabase.related
+  #{metabase.query-processor.util metabase.models.table schema.core metabase.models.metric metabase.models.interface metabase.models.query metabase.models.collection clojure.set metabase.models.field
+    metabase.models.dashboard-card metabase.models.card toucan.db metabase.api.common metabase.models.segment medley.core metabase.models.dashboard},
+  metabase.sync.analyze.table-row-count #{metabase.db.metadata-queries metabase.models.table schema.core clojure.tools.logging metabase.util metabase.sync.interface metabase.sync.util toucan.db},
+  metabase.query-processor.middleware.async-wait #{schema.core clojure.tools.logging clojure.core.async metabase.util metabase.models.setting metabase.util.i18n},
+  metabase.sync.analyze.fingerprint.fingerprinters
+  #{redux.core kixi.stats.core bigml.histogram.core metabase.util.date metabase.models.field metabase.util metabase.sync.analyze.classifiers.name kixi.stats.math metabase.sync.util clj-time.coerce
+    cheshire.core metabase.util.i18n},
+  metabase.automagic-dashboards.comparison
+  #{metabase.automagic-dashboards.populate metabase.query-processor.util metabase.models.table metabase.util metabase.mbql.normalize metabase.automagic-dashboards.core
+    metabase.automagic-dashboards.filters metabase.util.i18n metabase.api.common metabase.related medley.core},
+  metabase.setup #{metabase.models.setting toucan.db},
+  metabase.models.humanization #{metabase.util.infer-spaces clojure.tools.logging metabase.models.setting toucan.db metabase.util.i18n clojure.string},
+  metabase.query-processor.middleware.wrap-value-literals
+  #{metabase.mbql.predicates metabase.mbql.util metabase.driver metabase.query-processor.store metabase.util.date metabase.models.field metabase.mbql.schema},
+  metabase.api.permissions
+  #{metabase.models.permissions-group metabase.util.schema metabase.metabot metabase.models.permissions-group-membership metabase.util compojure.core metabase.models.permissions toucan.db
+    metabase.api.common toucan.hydrate},
+  metabase.models.query-cache #{toucan.models metabase.util},
+  metabase.query-processor.middleware.fetch-source-query
+  #{metabase.query-processor.interface schema.core metabase.mbql.util metabase.util.schema clojure.tools.logging metabase.util metabase.mbql.normalize metabase.models.card toucan.db
+    metabase.mbql.schema metabase.util.i18n clojure.string},
+  metabase.events #{metabase.config clojure.tools.logging clojure.core.async metabase.util metabase.util.i18n clojure.string},
+  metabase.api.geojson
+  #{schema.core metabase.util.schema metabase.util compojure.core metabase.models.setting cheshire.core clojure.java.io metabase.util.i18n metabase.api.common ring.util.response},
+  metabase.query-processor.middleware.binning
+  #{metabase.public-settings schema.core metabase.mbql.util metabase.util.schema metabase.query-processor.store metabase.util metabase.mbql.schema metabase.util.i18n clojure.math.numeric-tower},
+  metabase.driver.postgres
+  #{metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection metabase.util.ssh clojure.java.jdbc metabase.driver metabase.driver.sql.query-processor honeysql.core metabase.driver.common
+    clojure.set metabase.util.honeysql-extensions metabase.util.date metabase.driver.sql.util.unprepare metabase.driver.sql-jdbc.common metabase.driver.sql-jdbc.execute clojure.string
+    metabase.db.spec},
+  metabase.db.migrations
+  #{metabase.public-settings toucan.models metabase.config metabase.models.collection clojure.java.jdbc metabase.models.permissions-group clojure.tools.logging
+    metabase.models.permissions-group-membership metabase.models.pulse metabase.util.date metabase.models.field metabase.util metabase.models.user cemerick.friend.credentials metabase.models.setting
+    metabase.models.card metabase.db metabase.models.permissions toucan.db metabase.mbql.schema metabase.models.database metabase.util.i18n clojure.string metabase.models.humanization
+    metabase.models.dashboard},
+  metabase.util.encryption #{ring.util.codec clojure.tools.logging metabase.util buddy.core.nonce buddy.core.codecs buddy.core.crypto buddy.core.kdf metabase.util.i18n clojure.string environ.core},
+  metabase.models.dashboard
+  #{metabase.automagic-dashboards.populate metabase.query-processor.async metabase.public-settings toucan.models metabase.models.interface metabase.models.field-values metabase.models.collection
+    metabase.models.revision.diff metabase.models.params clojure.tools.logging clojure.set clojure.core.async metabase.util metabase.models.dashboard-card metabase.models.revision
+    metabase.models.card metabase.models.permissions toucan.db metabase.util.i18n clojure.string clojure.data toucan.hydrate metabase.events}},
+ :dependents
+ {metabase.query-processor #{metabase.api.pulse metabase.api.tiles metabase.pulse metabase.events.activity-feed},
+  metabase.query-processor.middleware.expand-macros #{metabase.query-processor},
+  metabase.api.user #{metabase.api.routes},
+  metabase.automagic-dashboards.populate
+  #{metabase.api.dashboard metabase.automagic-dashboards.core metabase.automagic-dashboards.rules metabase.automagic-dashboards.comparison metabase.models.dashboard},
+  metabase.driver.sql-jdbc.sync #{metabase.driver.sql-jdbc metabase.driver.mysql metabase.driver.h2 metabase.driver.postgres},
+  metabase.api.notify #{metabase.api.routes},
+  clojurewerkz.quartzite.jobs #{metabase.task.send-anonymous-stats metabase.task.sync-databases metabase.task.upgrade-checks metabase.task.send-pulses metabase.task.follow-up-emails},
+  metabase.logger #{metabase.api.util},
+  metabase.models.view-log #{metabase.events.view-log metabase.api.card metabase.api.activity metabase.cmd.load-from-h2 metabase.task.follow-up-emails},
+  crypto.random #{metabase.api.util},
+  metabase.email #{metabase.api.pulse metabase.pulse metabase.util.stats metabase.email.messages metabase.task.follow-up-emails},
+  metabase.query-processor.async #{metabase.api.card metabase.models.dashboard},
+  metabase.query-processor.middleware.parameters.dates #{metabase.query-processor.middleware.parameters.sql},
+  metabase.util.export #{metabase.email.messages},
+  metabase.db.metadata-queries #{metabase.sync.analyze.table-row-count},
+  clojure.java.shell #{metabase.config},
+  metabase.api.revision #{metabase.api.routes},
+  metabase.sync.analyze.fingerprint.insights #{metabase.sync.analyze.query-results},
+  metabase.query-processor.util
+  #{metabase.automagic-dashboards.populate metabase.query-processor.middleware.add-row-count-and-status metabase.models.query.permissions metabase.query-processor.middleware.process-userland-query
+    metabase.api.card metabase.query-processor.middleware.cache metabase.api.dashboard metabase.automagic-dashboards.core metabase.query-processor.middleware.limit metabase.models.card
+    metabase.driver.sql-jdbc.execute metabase.automagic-dashboards.rules metabase.related metabase.automagic-dashboards.comparison},
+  metabase.mbql.predicates #{metabase.query-processor.middleware.annotate metabase.sync.analyze.query-results metabase.query-processor.middleware.wrap-value-literals},
+  clojure.tools.namespace.find #{metabase.cmd.driver-methods metabase.util},
+  metabase.models.collection-revision #{metabase.cmd.load-from-h2},
+  metabase.public-settings
+  #{metabase.task.send-anonymous-stats metabase.api.session metabase.api.card metabase.query-processor.middleware.cache metabase.query-processor.middleware.cache-backend.db metabase.util.urls
+    metabase.util.stats metabase.models.user metabase.task.upgrade-checks metabase.api.database metabase.models.card metabase.email.messages metabase.task.follow-up-emails metabase.api.common
+    metabase.query-processor.middleware.binning metabase.db.migrations metabase.models.dashboard},
+  metabase.query-processor.middleware.bind-effective-timezone #{metabase.query-processor},
+  honeysql.helpers #{metabase.api.user metabase.driver.sql.query-processor metabase.api.search},
+  metabase.driver.sql-jdbc.connection #{metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc metabase.driver.mysql metabase.driver.h2 metabase.driver.sql-jdbc.execute metabase.driver.postgres},
+  metabase.query-processor.middleware.resolve-joins #{metabase.query-processor},
+  clojure.core.memoize #{metabase.models.setting.cache metabase.models.interface metabase.integrations.slack metabase.models.field},
+  clj-time.predicates #{metabase.task.send-pulses},
+  manifold.stream #{metabase.metabot.websocket},
+  metabase.models.table
+  #{metabase.api.notify metabase.query-processor.middleware.add-implicit-joins metabase.api.metric metabase.models.query.permissions metabase.api.card metabase.driver.sql.query-processor
+    metabase.query-processor.store metabase.api.automagic-dashboards metabase.sync.sync-metadata.fks metabase.sync.analyze.classify metabase.api.table metabase.sync.sync-metadata.metabase-metadata
+    metabase.util.stats metabase.sync.interface metabase.events.activity-feed metabase.automagic-dashboards.core metabase.sync.util metabase.api.database metabase.sync.sync-metadata.tables
+    metabase.cmd.load-from-h2 metabase.related metabase.sync.analyze.table-row-count metabase.automagic-dashboards.comparison},
+  metabase.query-processor.middleware.driver-specific #{metabase.query-processor},
+  clj-http.client #{metabase.api.session metabase.integrations.slack metabase.util.stats metabase.task.upgrade-checks},
+  metabase.query-processor.middleware.catch-exceptions #{metabase.query-processor},
+  metabase.query-processor.middleware.splice-params-in-response #{metabase.query-processor},
+  toucan.models
+  #{metabase.models.view-log metabase.models.collection-revision metabase.models.permissions-revision metabase.models.metric metabase.models.interface metabase.models.field-values
+    metabase.models.query metabase.models.dimension metabase.models.task-history metabase.models.metric-important-field metabase.models.permissions-group metabase.models.card-favorite
+    metabase.models.permissions-group-membership metabase.models.pulse metabase.models.pulse-channel metabase.models.field metabase.models.pulse-channel-recipient metabase.models.dashboard-card
+    metabase.models.user metabase.models.revision metabase.models.dashboard-favorite metabase.models.dashboard-card-series metabase.models.dependency metabase.models.card metabase.models.permissions
+    metabase.models.pulse-card metabase.models.session metabase.models.query-execution metabase.models.activity metabase.models.database metabase.models.query-cache metabase.db.migrations
+    metabase.models.dashboard},
+  metabase.sync.sync-metadata #{metabase.task.sync-databases metabase.api.database metabase.sync},
+  metabase.api.alert #{metabase.api.routes},
+  metabase.api.ldap #{metabase.api.routes},
+  metabase.query-processor.interface
+  #{metabase.query-processor.middleware.expand-macros metabase.query-processor.middleware.add-row-count-and-status metabase.driver.sql.query-processor
+    metabase.query-processor.middleware.mbql-to-native metabase.query-processor.middleware.parameters metabase.sync.util metabase.query-processor.middleware.limit
+    metabase.query-processor.middleware.log metabase.driver.sql-jdbc.execute metabase.query-processor.middleware.fetch-source-query},
+  buddy.core.hash #{metabase.query-processor.util metabase.query-processor.middleware.results-metadata metabase.sync.util},
+  metabase.db.connection-pool #{metabase.driver.sql-jdbc.connection metabase.db},
+  metabase.api.segment #{metabase.api.routes},
+  schema.core
+  #{metabase.query-processor metabase.query-processor.middleware.expand-macros metabase.api.user metabase.email metabase.api.revision metabase.query-processor.util metabase.mbql.predicates
+    metabase.sync.sync-metadata metabase.api.segment metabase.models.metric metabase.models.interface metabase.query-processor.middleware.add-implicit-joins metabase.models.field-values
+    metabase.task.sync-databases metabase.models.task-history metabase.api.embed metabase.mbql.util metabase.api.metric metabase.api.slack metabase.api.pulse metabase.sync.analyze
+    metabase.util.schema metabase.driver metabase.models.query.permissions metabase.query-processor.middleware.annotate metabase.models.params metabase.api.session
+    metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing metabase.api.card metabase.driver.sql.query-processor metabase.query-processor.store metabase.integrations.slack
+    metabase.sync.analyze.classifiers.no-preview-display metabase.pulse metabase.query-processor.middleware.add-implicit-clauses metabase.mbql.schema.helpers metabase.api.automagic-dashboards
+    metabase.query-processor.middleware.add-dimension-projections metabase.async.util metabase.sync.sync-metadata.fks metabase.sync.analyze.classify metabase.api.table
+    metabase.sync.sync-metadata.metabase-metadata metabase.util.honeysql-extensions metabase.sync.sync-metadata.fields.sync-metadata metabase.api.search metabase.models.pulse metabase.util.date
+    metabase.api.dashboard metabase.sync.analyze.classifiers.category metabase.sync.interface metabase.sync.analyze.classifiers.name metabase.sync.sync-metadata.fields.fetch-metadata
+    metabase.models.dashboard-card metabase.models.user metabase.api.task metabase.sync.field-values metabase.driver.mysql metabase.query-processor.middleware.permissions
+    metabase.automagic-dashboards.core metabase.sync.util metabase.query-processor.middleware.parameters.sql metabase.sync.sync-metadata.fields.sync-instances metabase.api.public
+    metabase.sync.analyze.query-results metabase.api.database metabase.sync.sync-metadata.tables metabase.sync.sync-metadata.fields.common metabase.db metabase.task.send-pulses
+    metabase.models.permissions metabase.middleware.session metabase.api.collection metabase.util.cron metabase.models.query-execution metabase.task metabase.api.common.internal metabase.mbql.schema
+    metabase.util.i18n metabase.driver.sql metabase.sync metabase.automagic-dashboards.rules metabase.api.common metabase.query-processor.middleware.cumulative-aggregations metabase.pulse.color
+    metabase.related metabase.sync.analyze.table-row-count metabase.query-processor.middleware.async-wait metabase.query-processor.middleware.fetch-source-query metabase.api.geojson
+    metabase.query-processor.middleware.binning},
+  metabase.query-processor.middleware.async #{metabase.query-processor},
+  metabase.query-processor.middleware.format-rows #{metabase.query-processor},
+  metabase.config
+  #{metabase.public-settings metabase.query-processor.middleware.async metabase.server metabase.api.slack metabase.api.session metabase.cmd.endpoint-dox metabase.integrations.slack
+    metabase.query-processor.middleware.cache metabase.middleware.security metabase.core metabase.util.honeysql-extensions metabase.util.stats metabase.util metabase.sync.analyze.classifiers.name
+    metabase.cmd metabase.task.upgrade-checks metabase.api.database metabase.email.messages metabase.db metabase.models.permissions metabase.middleware.session metabase.api.common.internal
+    metabase.events metabase.db.migrations},
+  metabase.middleware.auth #{metabase.api.routes},
+  metabase.plugins.lazy-loaded-driver #{metabase.plugins.initialize},
+  metabase.models.permissions-revision #{metabase.cmd.load-from-h2 metabase.models.permissions},
+  metabase.core.initialization-status #{metabase.core metabase.middleware.session},
+  metabase.metabot.websocket #{metabase.metabot},
+  metabase.query-processor.middleware.add-row-count-and-status #{metabase.query-processor},
+  metabase.models.metric
+  #{metabase.query-processor.middleware.expand-macros metabase.events.dependencies metabase.api.metric metabase.events.notifications metabase.api.automagic-dashboards metabase.api.search
+    metabase.events.revision metabase.util.stats metabase.automagic-dashboards.core metabase.cmd.load-from-h2 metabase.models.activity metabase.related},
+  clojurewerkz.quartzite.conversion #{metabase.task.sync-databases},
+  metabase.mbql.util.match #{metabase.mbql.util metabase.mbql.schema},
+  clojurewerkz.quartzite.scheduler #{metabase.task},
+  metabase.models.interface
+  #{metabase.models.view-log metabase.api.segment metabase.models.metric metabase.models.task-history metabase.models.metric-important-field metabase.api.metric metabase.api.pulse
+    metabase.models.query.permissions metabase.api.card metabase.api.activity metabase.api.table metabase.models.pulse metabase.models.pulse-channel metabase.models.field metabase.api.dashboard
+    metabase.models.dashboard-card metabase.query-processor.middleware.permissions metabase.automagic-dashboards.core metabase.api.database metabase.models.card metabase.models.permissions
+    metabase.api.collection metabase.models.activity metabase.models.database metabase.metabot.command metabase.api.common metabase.related metabase.models.dashboard},
+  metabase.query-processor.middleware.add-implicit-joins #{metabase.query-processor},
+  metabase.models.field-values
+  #{metabase.api.table metabase.models.field metabase.sync.analyze.classifiers.category metabase.sync.field-values metabase.api.database metabase.cmd.load-from-h2 metabase.models.card
+    metabase.models.dashboard},
+  schema.macros #{metabase.util.schema},
+  metabase.pulse.render #{metabase.api.pulse metabase.pulse metabase.email.messages},
+  metabase.models.query
+  #{metabase.query-processor.middleware.process-userland-query metabase.api.card metabase.api.automagic-dashboards metabase.api.dashboard metabase.automagic-dashboards.core metabase.models.card
+    metabase.related},
+  metabase.models.collection
+  #{metabase.automagic-dashboards.populate metabase.api.pulse metabase.api.card metabase.api.search metabase.util.stats metabase.api.dashboard metabase.models.user metabase.cmd.load-from-h2
+    metabase.api.collection metabase.metabot.command metabase.related metabase.db.migrations metabase.models.dashboard},
+  metabase.public-settings.metastore #{metabase.public-settings},
+  metabase.util.infer-spaces #{metabase.models.humanization},
+  metabase.models.dimension #{metabase.query-processor.middleware.add-dimension-projections metabase.models.field metabase.api.public metabase.cmd.load-from-h2},
+  postal.support #{metabase.email},
+  redux.core #{metabase.sync.analyze.fingerprint.insights metabase.sync.analyze.query-results metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.models.task-history #{metabase.api.task metabase.sync.util metabase.task.send-pulses},
+  metabase.util.ssh #{metabase.driver.sql-jdbc.connection metabase.plugins.lazy-loaded-driver metabase.driver.mysql metabase.driver.postgres},
+  metabase.metabot.instance #{metabase.metabot.websocket metabase.metabot},
+  metabase.api.embed #{metabase.api.routes metabase.api.preview-embed},
+  toucan.util #{metabase.models.interface},
+  clojure.java.jdbc
+  #{metabase.models.setting.cache metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection metabase.driver.sql-jdbc metabase.cmd.load-from-h2 metabase.db metabase.middleware.exceptions
+    metabase.task metabase.driver.sql-jdbc.execute metabase.driver.postgres metabase.db.migrations},
+  metabase.mbql.util
+  #{metabase.query-processor.middleware.expand-macros metabase.models.metric metabase.query-processor.middleware.add-implicit-joins metabase.query-processor.middleware.resolve-fields
+    metabase.api.tiles metabase.models.query.permissions metabase.query-processor.middleware.annotate metabase.models.params
+    metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing metabase.driver.sql.query-processor metabase.query-processor.middleware.add-implicit-clauses
+    metabase.query-processor.middleware.check-features metabase.query-processor.middleware.add-dimension-projections metabase.api.table metabase.events.activity-feed
+    metabase.automagic-dashboards.core metabase.query-processor.middleware.limit metabase.api.public metabase.api.database metabase.models.card metabase.driver.sql-jdbc.execute
+    metabase.query-processor.middleware.cumulative-aggregations metabase.query-processor.middleware.wrap-value-literals metabase.query-processor.middleware.fetch-source-query
+    metabase.query-processor.middleware.binning},
+  metabase.models.revision.diff #{metabase.models.revision metabase.models.dashboard},
+  metabase.sync.fetch-metadata #{metabase.sync.sync-metadata.fks metabase.sync.sync-metadata.metabase-metadata metabase.sync.sync-metadata.fields.fetch-metadata metabase.sync.sync-metadata.tables},
+  metabase.models.metric-important-field #{metabase.cmd.load-from-h2},
+  metabase.server #{metabase.core},
+  metabase.api.metric #{metabase.api.routes},
+  metabase.query-processor.middleware.resolve-fields #{metabase.query-processor},
+  ring.util.codec
+  #{metabase.api.automagic-dashboards metabase.query-processor.middleware.results-metadata metabase.util metabase.automagic-dashboards.core metabase.sync.util metabase.db metabase.util.encryption},
+  metabase.models.permissions-group
+  #{metabase.api.user metabase.integrations.ldap metabase.models.permissions-group-membership metabase.util.stats metabase.models.user metabase.cmd.load-from-h2 metabase.models.permissions
+    metabase.models.database metabase.metabot.command metabase.api.permissions metabase.db.migrations},
+  compojure.response #{metabase.async.api-response},
+  metabase.query-processor.middleware.normalize-query #{metabase.query-processor},
+  metabase.api.slack #{metabase.api.routes},
+  metabase.api.pulse #{metabase.api.routes},
+  metabase.sync.analyze #{metabase.task.sync-databases metabase.api.database metabase.sync},
+  metabase.query-processor.middleware.validate #{metabase.query-processor},
+  metabase.api.field #{metabase.api.routes metabase.api.public},
+  metabase.api.tiles #{metabase.api.routes},
+  metabase.util.schema
+  #{metabase.api.user metabase.email metabase.query-processor.util metabase.api.ldap metabase.api.segment metabase.models.metric metabase.query-processor.middleware.add-implicit-joins
+    metabase.models.field-values metabase.models.task-history metabase.api.embed metabase.mbql.util metabase.api.metric metabase.api.slack metabase.api.pulse metabase.api.tiles metabase.driver
+    metabase.models.query.permissions metabase.query-processor.middleware.annotate metabase.models.params metabase.api.session metabase.api.card metabase.driver.sql.query-processor
+    metabase.query-processor.store metabase.integrations.slack metabase.query-processor.middleware.add-implicit-clauses metabase.api.automagic-dashboards
+    metabase.query-processor.middleware.add-dimension-projections metabase.api.table metabase.sync.sync-metadata.metabase-metadata metabase.sync.sync-metadata.fields.sync-metadata metabase.api.search
+    metabase.models.pulse metabase.util.date metabase.api.dashboard metabase.sync.analyze.classifiers.category metabase.sync.interface metabase.sync.analyze.classifiers.name
+    metabase.models.dashboard-card metabase.models.user metabase.api.task metabase.query-processor.middleware.permissions metabase.sync.util metabase.query-processor.middleware.parameters.sql
+    metabase.sync.sync-metadata.fields.sync-instances metabase.api.public metabase.api.setting metabase.sync.analyze.query-results metabase.api.database metabase.sync.sync-metadata.fields.common
+    metabase.db metabase.models.permissions metabase.api.collection metabase.util.cron metabase.api.common.internal metabase.mbql.schema metabase.automagic-dashboards.rules metabase.api.util
+    metabase.api.common metabase.api.permissions metabase.query-processor.middleware.fetch-source-query metabase.api.geojson metabase.query-processor.middleware.binning},
+  metabase.driver
+  #{metabase.query-processor metabase.driver.sql-jdbc.sync metabase.driver.sql-jdbc.connection metabase.query-processor.middleware.driver-specific metabase.driver.sql-jdbc
+    metabase.query-processor.middleware.splice-params-in-response metabase.plugins.lazy-loaded-driver metabase.query-processor.middleware.add-implicit-joins
+    metabase.query-processor.middleware.annotate metabase.driver.sql.query-processor metabase.query-processor.middleware.check-features metabase.driver.common
+    metabase.query-processor.middleware.mbql-to-native metabase.api.table metabase.sync.sync-metadata.metabase-metadata metabase.query-processor.middleware.results-metadata metabase.util.stats
+    metabase.query-processor.middleware.parameters metabase.driver.mysql metabase.automagic-dashboards.core metabase.sync.util metabase.query-processor.middleware.parameters.sql metabase.api.database
+    metabase.driver.h2 metabase.models.database metabase.driver.sql-jdbc.execute metabase.driver.sql metabase.query-processor.middleware.resolve-driver
+    metabase.query-processor.middleware.wrap-value-literals metabase.driver.postgres},
+  metabase.query-processor.middleware.resolve-source-table #{metabase.query-processor},
+  metabase.models.query.permissions #{metabase.api.card metabase.api.automagic-dashboards metabase.query-processor.middleware.permissions metabase.models.card},
+  metabase.query-processor.middleware.annotate #{metabase.query-processor metabase.driver.sql.query-processor},
+  metabase.models.params #{metabase.api.public metabase.models.card metabase.models.dashboard},
+  manifold.deferred #{metabase.metabot.websocket},
+  metabase.query-processor.middleware.process-userland-query #{metabase.query-processor},
+  metabase.api.session #{metabase.api.user metabase.util.stats metabase.api.routes},
+  metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing #{metabase.query-processor},
+  amalloy.ring-buffer #{metabase.logger},
+  metabase.api.card #{metabase.api.revision metabase.api.routes metabase.api.public metabase.api.collection},
+  metabase.driver.sql.query-processor
+  #{metabase.driver.sql-jdbc metabase.driver.mysql metabase.query-processor.middleware.parameters.sql metabase.driver.h2 metabase.driver.sql metabase.driver.postgres},
+  kixi.stats.core #{metabase.sync.analyze.fingerprint.insights metabase.automagic-dashboards.core metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.api.activity #{metabase.api.routes},
+  metabase.integrations.ldap #{metabase.api.user metabase.api.ldap metabase.api.session},
+  metabase.query-processor.store
+  #{metabase.query-processor.middleware.add-implicit-joins metabase.query-processor.middleware.resolve-fields metabase.query-processor.middleware.annotate metabase.driver.sql.query-processor
+    metabase.query-processor.middleware.add-implicit-clauses metabase.driver.common metabase.query-processor.middleware.resolve-database metabase.driver.h2 metabase.driver.sql-jdbc.execute
+    metabase.query-processor.middleware.store metabase.query-processor.middleware.wrap-value-literals metabase.query-processor.middleware.binning},
+  clojure.core.cache #{metabase.email.messages},
+  metabase.integrations.slack #{metabase.metabot.websocket metabase.api.slack metabase.api.pulse metabase.pulse metabase.metabot metabase.util.stats metabase.metabot.slack},
+  metabase.sync.analyze.classifiers.no-preview-display #{metabase.sync.analyze.classify},
+  metabase.pulse #{metabase.api.pulse metabase.task.send-pulses metabase.metabot.command},
+  schema.spec.core #{metabase.automagic-dashboards.rules},
+  honeysql.format #{metabase.driver.sql.query-processor metabase.util.honeysql-extensions},
+  metabase.metabot #{metabase.events.metabot-lifecycle metabase.core metabase.api.permissions},
+  metabase.query-processor.middleware.cache #{metabase.query-processor metabase.api.card},
+  clj-time.core
+  #{metabase.logger metabase.sync.analyze.fingerprint.insights metabase.driver.common metabase.util.date metabase.sync.interface metabase.driver.mysql metabase.automagic-dashboards.core
+    metabase.sync.util metabase.task.send-pulses metabase.task.follow-up-emails},
+  metabase.models.card-favorite #{metabase.api.card metabase.api.search metabase.cmd.load-from-h2},
+  metabase.query-processor.middleware.add-implicit-clauses #{metabase.query-processor},
+  metabase.query-processor.middleware.check-features #{metabase.query-processor},
+  schema.coerce #{metabase.automagic-dashboards.rules},
+  bigml.histogram.core #{metabase.sync.analyze.fingerprint.fingerprinters},
+  honeysql.core
+  #{metabase.models.setting.cache metabase.metabot.instance metabase.driver.sql.query-processor metabase.query-processor.middleware.add-implicit-clauses metabase.util.honeysql-extensions
+    metabase.driver.mysql metabase.query-processor.middleware.parameters.sql metabase.driver.h2 metabase.driver.sql metabase.driver.postgres},
+  clojure.data.csv #{metabase.util.export},
+  metabase.mbql.schema.helpers #{metabase.mbql.schema},
+  ring.adapter.jetty #{metabase.server},
+  metabase.util.quotation #{metabase.email.messages},
+  metabase.middleware.security #{metabase.middleware.exceptions},
+  metabase.query-processor.middleware.add-settings #{metabase.query-processor},
+  metabase.middleware.util #{metabase.middleware.security},
+  metabase.api.automagic-dashboards #{metabase.api.routes},
+  clojure.math.combinatorics #{metabase.automagic-dashboards.core},
+  clojure.tools.logging
+  #{metabase.query-processor.middleware.expand-macros metabase.automagic-dashboards.populate metabase.models.setting.cache metabase.driver.sql-jdbc.sync metabase.events.dependencies metabase.email
+    metabase.events.metabot-lifecycle metabase.public-settings metabase.driver.sql-jdbc.connection metabase.api.ldap metabase.task.send-anonymous-stats metabase.api.segment
+    metabase.query-processor.middleware.async metabase.plugins.lazy-loaded-driver metabase.metabot.websocket metabase.events.view-log metabase.models.interface metabase.models.field-values
+    metabase.async.api-response metabase.task.sync-databases metabase.models.task-history metabase.util.ssh metabase.metabot.instance metabase.api.embed metabase.server metabase.api.metric
+    metabase.models.permissions-group metabase.api.pulse metabase.sync.analyze metabase.driver metabase.models.query.permissions metabase.models.params metabase.events.notifications
+    metabase.query-processor.middleware.process-userland-query metabase.api.session metabase.api.card metabase.driver.sql.query-processor metabase.integrations.slack metabase.pulse metabase.metabot
+    metabase.query-processor.middleware.cache metabase.core metabase.query-processor.middleware.cache-backend.db metabase.async.util metabase.sync.sync-metadata.fks metabase.sync.analyze.classify
+    metabase.plugins.classloader metabase.sample-data metabase.driver.common metabase.query-processor.middleware.mbql-to-native metabase.api.table metabase.sync.sync-metadata.metabase-metadata
+    metabase.sync.sync-metadata.fields.sync-metadata metabase.plugins.initialize metabase.query-processor.middleware.results-metadata metabase.models.pulse metabase.events.revision
+    metabase.util.stats metabase.plugins.jdbc-proxy metabase.util.date metabase.query-processor.middleware.parameters metabase.util metabase.api.dashboard metabase.sync.analyze.classifiers.category
+    metabase.sync.analyze.classifiers.name metabase.models.user metabase.metabot.slack metabase.plugins metabase.sync.field-values metabase.driver.mysql metabase.events.activity-feed
+    metabase.automagic-dashboards.core metabase.sync.util metabase.task.upgrade-checks metabase.sync.sync-metadata.fields.sync-instances metabase.api.database metabase.sync.sync-metadata.tables
+    metabase.models.card metabase.email.messages metabase.db metabase.plugins.dependencies metabase.task.send-pulses metabase.models.permissions metabase.middleware.exceptions metabase.metabot.events
+    metabase.task metabase.api.common.internal metabase.models.database metabase.metabot.command metabase.query-processor.middleware.log metabase.driver.sql-jdbc.execute metabase.util.i18n
+    metabase.events.last-login metabase.automagic-dashboards.rules metabase.task.follow-up-emails metabase.api.common metabase.sync.analyze.table-row-count
+    metabase.query-processor.middleware.async-wait metabase.models.humanization metabase.query-processor.middleware.fetch-source-query metabase.events metabase.db.migrations metabase.util.encryption
+    metabase.models.dashboard},
+  metabase.query-processor.middleware.add-dimension-projections #{metabase.query-processor},
+  metabase.async.util #{metabase.query-processor.middleware.async metabase.api.card metabase.api.public},
+  metabase.sync.sync-metadata.fks #{metabase.sync.sync-metadata},
+  metabase.sync.analyze.classify #{metabase.sync.analyze metabase.automagic-dashboards.core},
+  metabase.plugins.classloader
+  #{metabase.driver metabase.query-processor.middleware.cache metabase.plugins.jdbc-proxy metabase.plugins metabase.plugins.dependencies metabase.task metabase.models.database},
+  postal.core #{metabase.email},
+  metabase.sample-data #{metabase.core metabase.api.database},
+  clojure.core #{metabase.models.setting.cache metabase.server metabase.mbql.schema},
+  metabase.driver.common #{metabase.plugins.lazy-loaded-driver metabase.query-processor.middleware.annotate metabase.driver.mysql metabase.driver.h2 metabase.driver.postgres},
+  metabase.models.permissions-group-membership #{metabase.models.user metabase.cmd.load-from-h2 metabase.api.permissions metabase.db.migrations},
+  metabase.query-processor.middleware.mbql-to-native #{metabase.query-processor},
+  colorize.core #{metabase.util metabase.cmd.load-from-h2},
+  metabase.api.table #{metabase.api.routes metabase.api.database},
+  clojure.set
+  #{metabase.driver.sql-jdbc.sync metabase.api.ldap metabase.api.embed metabase.models.params metabase.events.notifications metabase.api.activity metabase.integrations.ldap
+    metabase.models.pulse-channel metabase.models.dashboard-card metabase.driver.mysql metabase.models.dependency metabase.models.card metabase.mbql.schema metabase.related metabase.driver.postgres
+    metabase.models.dashboard},
+  metabase.sync.sync-metadata.metabase-metadata #{metabase.sync.sync-metadata metabase.sync.sync-metadata.tables},
+  metabase.util.honeysql-extensions
+  #{metabase.models.setting.cache metabase.driver.sql-jdbc metabase.models.query metabase.driver.sql.query-processor metabase.api.search metabase.driver.mysql metabase.models.permissions
+    metabase.driver.h2 metabase.driver.postgres},
+  metabase.api.search #{metabase.api.routes},
+  metabase.plugins.initialize #{metabase.plugins},
+  metabase.query-processor.middleware.results-metadata #{metabase.query-processor metabase.api.card},
+  clojure.core.async
+  #{metabase.events.dependencies metabase.events.metabot-lifecycle metabase.query-processor.middleware.async metabase.events.view-log metabase.async.api-response metabase.events.notifications
+    metabase.api.card metabase.async.util metabase.events.revision metabase.events.activity-feed metabase.api.public metabase.events.last-login metabase.query-processor.middleware.async-wait
+    metabase.events metabase.models.dashboard},
+  metabase.models.pulse
+  #{metabase.api.pulse metabase.events.notifications metabase.api.card metabase.pulse metabase.api.search metabase.util.stats metabase.cmd.load-from-h2 metabase.task.send-pulses
+    metabase.api.collection metabase.models.activity metabase.db.migrations},
+  clojure.core.match #{metabase.mbql.util.match metabase.models.revision.diff metabase.models.permissions},
+  metabase.util.urls #{metabase.api.pulse metabase.pulse metabase.email.messages metabase.metabot.command},
+  metabase.util.stats #{metabase.task.send-anonymous-stats metabase.api.util},
+  metabase.query-processor.middleware.auto-bucket-datetimes #{metabase.query-processor},
+  metabase.models.pulse-channel #{metabase.api.pulse metabase.models.pulse metabase.util.stats metabase.cmd.load-from-h2 metabase.task.send-pulses},
+  clojure.java.classpath #{metabase.cmd.driver-methods metabase.util},
+  clojurewerkz.quartzite.triggers #{metabase.task.send-anonymous-stats metabase.task.sync-databases metabase.task.upgrade-checks metabase.task.send-pulses metabase.task.follow-up-emails},
+  clj-time.format #{metabase.logger metabase.driver.common metabase.util.date metabase.driver.mysql metabase.automagic-dashboards.core},
+  metabase.util.date
+  #{metabase.models.view-log metabase.models.collection-revision metabase.query-processor.middleware.async metabase.query-processor.middleware.format-rows metabase.plugins.lazy-loaded-driver
+    metabase.models.permissions-revision metabase.models.interface metabase.async.api-response metabase.models.task-history metabase.metabot.instance metabase.mbql.util metabase.sync.analyze
+    metabase.driver metabase.query-processor.middleware.process-userland-query metabase.query-processor.middleware.cache metabase.middleware.security
+    metabase.query-processor.middleware.cache-backend.db metabase.models.user metabase.models.revision metabase.driver.mysql metabase.cmd metabase.automagic-dashboards.core metabase.sync.util
+    metabase.query-processor.middleware.parameters.sql metabase.models.dependency metabase.email.messages metabase.db metabase.driver.h2 metabase.models.session metabase.models.activity
+    metabase.mbql.schema metabase.driver.sql-jdbc.execute metabase.events.last-login metabase.sync.analyze.fingerprint.fingerprinters metabase.query-processor.middleware.wrap-value-literals
+    metabase.driver.postgres metabase.db.migrations},
+  metabase.query-processor.middleware.resolve-database #{metabase.query-processor},
+  compojure.route #{metabase.api.routes},
+  metabase.query-processor.middleware.parameters #{metabase.query-processor},
+  metabase.models.field
+  #{metabase.sync.analyze.fingerprint.insights metabase.query-processor.middleware.add-implicit-joins metabase.query-processor.middleware.resolve-fields metabase.sync.analyze
+    metabase.driver.sql.query-processor metabase.query-processor.store metabase.query-processor.middleware.add-implicit-clauses metabase.api.automagic-dashboards metabase.sync.sync-metadata.fks
+    metabase.sync.analyze.classify metabase.api.table metabase.sync.sync-metadata.metabase-metadata metabase.sync.sync-metadata.fields.sync-metadata metabase.util.stats
+    metabase.sync.analyze.classifiers.category metabase.sync.interface metabase.sync.sync-metadata.fields.fetch-metadata metabase.sync.field-values metabase.automagic-dashboards.core
+    metabase.query-processor.middleware.parameters.sql metabase.sync.sync-metadata.fields.sync-instances metabase.api.public metabase.api.database metabase.cmd.load-from-h2 metabase.related
+    metabase.sync.analyze.fingerprint.fingerprinters metabase.query-processor.middleware.wrap-value-literals metabase.db.migrations},
+  metabase.sync.analyze.fingerprint #{metabase.sync.analyze},
+  metabase.query-processor.middleware.parameters.mbql #{metabase.query-processor.middleware.parameters},
+  cheshire.generate #{metabase.models.pulse-channel metabase.models.database metabase.util.i18n},
+  metabase.util
+  #{metabase.query-processor metabase.query-processor.middleware.expand-macros metabase.api.user metabase.automagic-dashboards.populate metabase.models.setting.cache metabase.driver.sql-jdbc.sync
+    metabase.models.view-log metabase.email metabase.models.collection-revision metabase.public-settings metabase.driver.sql-jdbc.connection metabase.query-processor.middleware.catch-exceptions
+    metabase.api.segment metabase.plugins.lazy-loaded-driver metabase.models.permissions-revision metabase.metabot.websocket metabase.models.metric metabase.models.interface
+    metabase.query-processor.middleware.add-implicit-joins metabase.models.field-values metabase.models.query metabase.async.api-response metabase.task.sync-databases metabase.models.dimension
+    metabase.models.task-history metabase.util.ssh metabase.metabot.instance metabase.api.embed metabase.mbql.util metabase.models.metric-important-field metabase.server metabase.api.metric
+    metabase.query-processor.middleware.resolve-fields metabase.models.permissions-group metabase.api.pulse metabase.sync.analyze metabase.api.tiles metabase.util.schema metabase.driver
+    metabase.models.query.permissions metabase.query-processor.middleware.annotate metabase.models.params metabase.query-processor.middleware.process-userland-query metabase.api.session
+    metabase.cmd.endpoint-dox metabase.api.card metabase.driver.sql.query-processor metabase.integrations.ldap metabase.query-processor.store metabase.integrations.slack metabase.pulse
+    metabase.query-processor.middleware.cache metabase.models.card-favorite metabase.query-processor.middleware.add-implicit-clauses metabase.query-processor.middleware.check-features metabase.core
+    metabase.query-processor.middleware.cache-backend.db metabase.query-processor.middleware.add-dimension-projections metabase.sync.sync-metadata.fks metabase.sync.analyze.classify
+    metabase.plugins.classloader metabase.driver.common metabase.models.permissions-group-membership metabase.query-processor.middleware.mbql-to-native metabase.api.table
+    metabase.sync.sync-metadata.metabase-metadata metabase.util.honeysql-extensions metabase.sync.sync-metadata.fields.sync-metadata metabase.api.search metabase.plugins.initialize
+    metabase.query-processor.middleware.results-metadata metabase.models.pulse metabase.util.stats metabase.models.pulse-channel metabase.plugins.jdbc-proxy metabase.util.date
+    metabase.query-processor.middleware.resolve-database metabase.cmd.driver-methods metabase.query-processor.middleware.parameters metabase.models.field metabase.api.dashboard
+    metabase.sync.interface metabase.sync.analyze.classifiers.name metabase.sync.sync-metadata.fields.fetch-metadata metabase.models.dashboard-card metabase.models.user metabase.plugins
+    metabase.models.revision metabase.sync.field-values metabase.cmd metabase.events.activity-feed metabase.automagic-dashboards.core metabase.sync.util
+    metabase.sync.sync-metadata.fields.sync-instances metabase.api.public metabase.sync.analyze.query-results metabase.api.database metabase.sync.sync-metadata.tables metabase.cmd.load-from-h2
+    metabase.models.card metabase.email.messages metabase.db metabase.plugins.dependencies metabase.models.permissions metabase.driver.h2 metabase.middleware.exceptions metabase.models.session
+    metabase.api.collection metabase.metabot.events metabase.models.query-execution metabase.models.activity metabase.task metabase.api.common.internal metabase.mbql.schema metabase.models.database
+    metabase.metabot.command metabase.query-processor.middleware.log metabase.driver.sql-jdbc.execute metabase.automagic-dashboards.rules metabase.api.common metabase.sync.analyze.table-row-count
+    metabase.query-processor.middleware.async-wait metabase.sync.analyze.fingerprint.fingerprinters metabase.automagic-dashboards.comparison metabase.api.permissions metabase.models.query-cache
+    metabase.query-processor.middleware.fetch-source-query metabase.events metabase.api.geojson metabase.query-processor.middleware.binning metabase.db.migrations metabase.util.encryption
+    metabase.models.dashboard},
+  metabase.sync.analyze.classifiers.text-fingerprint #{metabase.sync.analyze.classify},
+  metabase.api.setup #{metabase.api.routes},
+  metabase.api.dashboard #{metabase.api.routes metabase.api.public},
+  metabase.sync.analyze.classifiers.category #{metabase.sync.analyze.classify},
+  metabase.sync.interface
+  #{metabase.sync.sync-metadata metabase.sync.analyze metabase.sync.analyze.classifiers.no-preview-display metabase.sync.sync-metadata.fks metabase.sync.analyze.classify
+    metabase.sync.sync-metadata.metabase-metadata metabase.sync.sync-metadata.fields.sync-metadata metabase.sync.analyze.classifiers.category metabase.sync.analyze.classifiers.name
+    metabase.sync.sync-metadata.fields.fetch-metadata metabase.sync.field-values metabase.sync.util metabase.sync.sync-metadata.fields.sync-instances metabase.sync.analyze.query-results
+    metabase.sync.sync-metadata.tables metabase.sync.sync-metadata.fields.common metabase.sync metabase.sync.analyze.table-row-count},
+  compojure.core
+  #{metabase.api.user metabase.api.notify metabase.api.revision metabase.api.ldap metabase.api.segment metabase.api.embed metabase.api.metric metabase.api.slack metabase.api.pulse metabase.api.tiles
+    metabase.api.session metabase.api.card metabase.api.activity metabase.api.automagic-dashboards metabase.api.table metabase.api.search metabase.api.dashboard metabase.api.routes metabase.api.task
+    metabase.api.public metabase.api.setting metabase.api.database metabase.api.collection metabase.api.preview-embed metabase.api.util metabase.api.common metabase.api.permissions
+    metabase.api.geojson},
+  metabase.sync.analyze.classifiers.name #{metabase.sync.analyze.classify metabase.sync.analyze.query-results metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.models.pulse-channel-recipient #{metabase.models.pulse metabase.models.pulse-channel metabase.cmd.load-from-h2},
+  metabase.query-processor.middleware.constraints #{metabase.query-processor metabase.api.card metabase.api.dashboard},
+  dynapath.util #{metabase.plugins.classloader},
+  metabase.driver.sql.util.unprepare #{metabase.driver.sql-jdbc metabase.query-processor.middleware.parameters metabase.driver.h2 metabase.driver.postgres},
+  metabase.sync.sync-metadata.fields.fetch-metadata #{metabase.sync.sync-metadata.fields.sync-instances},
+  metabase.models.dashboard-card
+  #{metabase.api.embed metabase.events.notifications metabase.util.stats metabase.api.dashboard metabase.api.public metabase.cmd.load-from-h2 metabase.related metabase.models.dashboard},
+  metabase.util.ui-logic #{metabase.pulse},
+  metabase.models.user
+  #{metabase.api.user metabase.cmd.reset-password metabase.events.notifications metabase.api.session metabase.integrations.ldap metabase.core metabase.util.stats metabase.models.pulse-channel
+    metabase.models.revision metabase.cmd.load-from-h2 metabase.middleware.session metabase.events.last-login metabase.task.follow-up-emails metabase.db.migrations},
+  stencil.core #{metabase.email.messages},
+  metabase.api.task #{metabase.api.routes},
+  metabase.metabot.slack #{metabase.metabot.events metabase.metabot.command},
+  metabase.plugins #{metabase.core},
+  metabase.models.revision
+  #{metabase.api.revision metabase.api.segment metabase.models.metric metabase.api.metric metabase.events.revision metabase.api.dashboard metabase.cmd.load-from-h2 metabase.models.card
+    metabase.models.dashboard},
+  metabase.sync.field-values #{metabase.task.sync-databases metabase.api.table metabase.api.database metabase.sync},
+  metabase.models.dashboard-favorite #{metabase.api.search metabase.api.dashboard metabase.cmd.load-from-h2},
+  metabase.query-processor.middleware.permissions #{metabase.query-processor},
+  metabase.plugins.files #{metabase.plugins},
+  aleph.http #{metabase.metabot.websocket},
+  puppetlabs.i18n.core #{metabase.query-processor.middleware.expand-macros metabase.util.i18n},
+  metabase.mbql.normalize
+  #{metabase.models.interface metabase.models.query metabase.api.tiles metabase.automagic-dashboards.core metabase.api.public metabase.models.card metabase.automagic-dashboards.comparison
+    metabase.query-processor.middleware.fetch-source-query},
+  kixi.stats.math #{metabase.sync.analyze.fingerprint.insights metabase.automagic-dashboards.core metabase.sync.analyze.fingerprint.fingerprinters},
+  clojure.pprint #{metabase.util metabase.util.pretty},
+  metabase.automagic-dashboards.core #{metabase.api.automagic-dashboards metabase.automagic-dashboards.comparison},
+  taoensso.nippy #{metabase.models.interface metabase.query-processor.middleware.cache-backend.db metabase.sync.util},
+  metabase.sync.util
+  #{metabase.sync.sync-metadata metabase.sync.analyze metabase.sync.sync-metadata.fks metabase.sync.analyze.classify metabase.sync.sync-metadata.metabase-metadata
+    metabase.sync.sync-metadata.fields.sync-metadata metabase.sync.analyze.classifiers.category metabase.sync.analyze.classifiers.name metabase.sync.field-values
+    metabase.sync.sync-metadata.fields.sync-instances metabase.sync.sync-metadata.tables metabase.sync.sync-metadata.fields.common metabase.sync metabase.sync.analyze.table-row-count
+    metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.models.dashboard-card-series #{metabase.models.dashboard-card metabase.api.public metabase.cmd.load-from-h2},
+  metabase.util.pretty #{metabase.util.honeysql-extensions},
+  cemerick.friend.credentials #{metabase.api.user metabase.api.session metabase.models.user metabase.db.migrations},
+  buddy.core.nonce #{metabase.util.encryption},
+  metabase.query-processor.middleware.parameters.sql #{metabase.query-processor.middleware.parameters},
+  metabase.query-processor.middleware.limit #{metabase.query-processor},
+  buddy.core.codecs #{metabase.query-processor.util metabase.api.automagic-dashboards metabase.automagic-dashboards.core metabase.util.encryption},
+  metabase.api.public #{metabase.api.embed metabase.api.routes},
+  metabase.api.setting #{metabase.api.routes},
+  metabase.models.dependency #{metabase.events.dependencies metabase.models.metric metabase.events.notifications metabase.cmd.load-from-h2 metabase.models.card},
+  metabase.sync.analyze.query-results #{metabase.api.card metabase.query-processor.middleware.results-metadata},
+  metabase.models.setting
+  #{metabase.email metabase.public-settings metabase.api.ldap metabase.metabot.instance metabase.models.permissions-group metabase.api.slack metabase.driver metabase.api.session
+    metabase.integrations.ldap metabase.integrations.slack metabase.metabot metabase.middleware.security metabase.core metabase.api.setting metabase.cmd.load-from-h2 metabase.task.send-pulses
+    metabase.task.follow-up-emails metabase.query-processor.middleware.async-wait metabase.setup metabase.models.humanization metabase.api.geojson metabase.db.migrations},
+  metabase.api.database #{metabase.api.routes},
+  metabase.sync.sync-metadata.tables #{metabase.sync.sync-metadata},
+  metabase.sync.sync-metadata.fields.common #{metabase.sync.sync-metadata.fields.sync-metadata metabase.sync.sync-metadata.fields.fetch-metadata metabase.sync.sync-metadata.fields.sync-instances},
+  metabase.driver.sql-jdbc.common #{metabase.driver.mysql metabase.driver.postgres},
+  metabase.models.card
+  #{metabase.automagic-dashboards.populate metabase.events.dependencies metabase.api.revision metabase.api.embed metabase.api.pulse metabase.events.notifications metabase.api.card
+    metabase.api.activity metabase.pulse metabase.api.automagic-dashboards metabase.api.table metabase.api.search metabase.models.pulse metabase.events.revision metabase.util.stats
+    metabase.api.dashboard metabase.models.dashboard-card metabase.events.activity-feed metabase.query-processor.middleware.permissions metabase.automagic-dashboards.core metabase.api.public
+    metabase.api.database metabase.cmd.load-from-h2 metabase.api.collection metabase.models.activity metabase.metabot.command metabase.related metabase.query-processor.middleware.fetch-source-query
+    metabase.db.migrations metabase.models.dashboard},
+  metabase.email.messages #{metabase.api.user metabase.events.notifications metabase.api.session metabase.api.card metabase.pulse metabase.models.user metabase.task.follow-up-emails},
+  metabase.db
+  #{metabase.models.setting.cache metabase.query-processor.middleware.add-implicit-joins metabase.models.query metabase.cmd.reset-password metabase.models.params
+    metabase.query-processor.middleware.add-implicit-clauses metabase.core metabase.models.dashboard-card metabase.cmd metabase.api.public metabase.cmd.load-from-h2 metabase.driver.h2
+    metabase.middleware.session metabase.task metabase.models.database metabase.db.migrations},
+  metabase.plugins.dependencies #{metabase.plugins.initialize},
+  metabase.sync.sync-metadata.fields #{metabase.sync.sync-metadata},
+  metabase.models.permissions
+  #{metabase.models.query.permissions metabase.api.automagic-dashboards metabase.models.pulse metabase.models.field metabase.models.user metabase.query-processor.middleware.permissions
+    metabase.api.database metabase.cmd.load-from-h2 metabase.models.card metabase.api.collection metabase.models.database metabase.metabot.command metabase.api.permissions metabase.db.migrations
+    metabase.models.dashboard},
+  clojure.edn #{metabase.metabot.events metabase.metabot.command},
+  hiccup.core #{metabase.api.pulse metabase.email.messages},
+  clj-time.coerce
+  #{metabase.logger metabase.sync.analyze.fingerprint.insights metabase.driver.common metabase.util.date metabase.driver.mysql metabase.sync.util metabase.task.follow-up-emails
+    metabase.sync.analyze.fingerprint.fingerprinters},
+  metabase.middleware.session #{metabase.api.session},
+  metabase.middleware.exceptions #{metabase.async.api-response metabase.api.routes},
+  metabase.models.pulse-card #{metabase.events.notifications metabase.models.pulse metabase.util.stats metabase.cmd.load-from-h2},
+  toucan.db
+  #{metabase.query-processor.middleware.expand-macros metabase.api.user metabase.automagic-dashboards.populate metabase.models.setting.cache metabase.api.revision metabase.models.collection-revision
+    metabase.public-settings metabase.driver.sql-jdbc.connection metabase.api.segment metabase.models.permissions-revision metabase.models.metric metabase.events.view-log
+    metabase.query-processor.middleware.add-implicit-joins metabase.models.field-values metabase.models.query metabase.task.sync-databases metabase.models.task-history metabase.cmd.reset-password
+    metabase.metabot.instance metabase.api.embed metabase.api.metric metabase.query-processor.middleware.resolve-fields metabase.models.permissions-group metabase.api.pulse metabase.sync.analyze
+    metabase.driver metabase.models.query.permissions metabase.models.params metabase.events.notifications metabase.query-processor.middleware.process-userland-query metabase.api.session
+    metabase.api.card metabase.api.activity metabase.integrations.ldap metabase.pulse metabase.query-processor.middleware.add-implicit-clauses metabase.core
+    metabase.query-processor.middleware.cache-backend.db metabase.query-processor.middleware.add-dimension-projections metabase.sync.sync-metadata.fks metabase.sync.analyze.classify
+    metabase.sample-data metabase.models.permissions-group-membership metabase.api.table metabase.sync.sync-metadata.metabase-metadata metabase.sync.sync-metadata.fields.sync-metadata
+    metabase.api.search metabase.query-processor.middleware.results-metadata metabase.models.pulse metabase.util.stats metabase.models.pulse-channel
+    metabase.query-processor.middleware.resolve-database metabase.models.field metabase.api.dashboard metabase.sync.sync-metadata.fields.fetch-metadata metabase.models.dashboard-card
+    metabase.models.user metabase.api.task metabase.models.revision metabase.sync.field-values metabase.events.activity-feed metabase.query-processor.middleware.permissions
+    metabase.automagic-dashboards.core metabase.sync.util metabase.query-processor.middleware.parameters.sql metabase.sync.sync-metadata.fields.sync-instances metabase.api.public
+    metabase.models.dependency metabase.api.database metabase.sync.sync-metadata.tables metabase.cmd.load-from-h2 metabase.models.card metabase.email.messages metabase.db metabase.models.permissions
+    metabase.middleware.session metabase.models.session metabase.api.collection metabase.models.activity metabase.task metabase.models.database metabase.metabot.command metabase.events.last-login
+    metabase.task.follow-up-emails metabase.api.common metabase.related metabase.sync.analyze.table-row-count metabase.setup metabase.models.humanization metabase.api.permissions
+    metabase.query-processor.middleware.fetch-source-query metabase.db.migrations metabase.models.dashboard},
+  cheshire.core
+  #{metabase.util.export metabase.query-processor.util metabase.models.interface metabase.models.query metabase.async.api-response metabase.api.tiles metabase.util.schema metabase.api.session
+    metabase.api.card metabase.integrations.slack metabase.api.automagic-dashboards metabase.query-processor.middleware.results-metadata metabase.automagic-dashboards.core
+    metabase.task.upgrade-checks metabase.api.public metabase.metabot.events metabase.pulse.color metabase.sync.analyze.fingerprint.fingerprinters metabase.api.geojson},
+  metabase.models.session #{metabase.api.session metabase.cmd.load-from-h2 metabase.middleware.session},
+  metabase.query-processor.middleware.dev #{metabase.query-processor},
+  metabase.api.collection #{metabase.api.routes},
+  metabase.util.cron #{metabase.models.interface metabase.task.sync-databases metabase.api.database},
+  metabase.metabot.events #{metabase.metabot.websocket},
+  clojure.java.io
+  #{metabase.config metabase.async.api-response metabase.util.infer-spaces metabase.cmd.endpoint-dox metabase.integrations.slack metabase.sample-data metabase.plugins metabase.cmd.load-from-h2
+    metabase.db metabase.metabot.command metabase.automagic-dashboards.rules metabase.api.geojson},
+  metabase.util.password #{metabase.public-settings metabase.util.schema metabase.api.session},
+  clojurewerkz.quartzite.schedule.cron #{metabase.task.send-anonymous-stats metabase.task.sync-databases metabase.task.upgrade-checks metabase.task.send-pulses metabase.task.follow-up-emails},
+  metabase.models.query-execution #{metabase.query-processor.middleware.process-userland-query metabase.util.stats},
+  throttle.core #{metabase.metabot.websocket metabase.api.session},
+  metabase.models.activity #{metabase.api.activity metabase.events.activity-feed metabase.cmd.load-from-h2 metabase.task.follow-up-emails},
+  metabase.api.preview-embed #{metabase.api.routes},
+  metabase.task
+  #{metabase.task.send-anonymous-stats metabase.task.sync-databases metabase.core metabase.api.task metabase.task.upgrade-checks metabase.task.send-pulses metabase.task.follow-up-emails},
+  metabase.api.common.internal #{metabase.api.common},
+  metabase.mbql.schema
+  #{metabase.query-processor metabase.query-processor.middleware.expand-macros metabase.mbql.predicates metabase.query-processor.middleware.add-implicit-joins metabase.mbql.util
+    metabase.query-processor.middleware.validate metabase.query-processor.middleware.annotate metabase.query-processor.middleware.reconcile-breakout-and-order-by-bucketing
+    metabase.driver.sql.query-processor metabase.query-processor.middleware.add-implicit-clauses metabase.query-processor.middleware.add-dimension-projections metabase.api.table
+    metabase.query-processor.middleware.resolve-database metabase.api.database metabase.models.query-execution metabase.query-processor.middleware.cumulative-aggregations
+    metabase.query-processor.middleware.wrap-value-literals metabase.query-processor.middleware.fetch-source-query metabase.query-processor.middleware.binning metabase.db.migrations},
+  metabase.models.database
+  #{metabase.api.notify metabase.driver.sql-jdbc.connection metabase.task.sync-databases metabase.api.card metabase.query-processor.store metabase.api.automagic-dashboards metabase.sample-data
+    metabase.util.stats metabase.query-processor.middleware.resolve-database metabase.sync.interface metabase.sync.analyze.classifiers.name metabase.automagic-dashboards.core metabase.api.database
+    metabase.cmd.load-from-h2 metabase.db.migrations},
+  metabase.automagic-dashboards.filters #{metabase.automagic-dashboards.populate metabase.automagic-dashboards.core metabase.automagic-dashboards.comparison},
+  metabase.metabot.command #{metabase.metabot.events},
+  buddy.core.crypto #{metabase.util.encryption},
+  metabase.driver.util
+  #{metabase.query-processor metabase.public-settings metabase.pulse metabase.core metabase.driver.common metabase.api.table metabase.sync.sync-metadata.metabase-metadata metabase.sync.util
+    metabase.query-processor.middleware.parameters.sql metabase.api.database metabase.models.database metabase.query-processor.middleware.resolve-driver},
+  metabase.query-processor.middleware.log #{metabase.query-processor},
+  metabase.api.dataset #{metabase.api.embed metabase.api.card metabase.api.routes metabase.api.public},
+  honeysql.types #{metabase.api.common},
+  metabase.driver.sql-jdbc.execute #{metabase.driver.sql-jdbc metabase.driver.mysql metabase.driver.postgres},
+  buddy.core.kdf #{metabase.util.encryption},
+  ring.core.protocols #{metabase.async.api-response},
+  metabase.util.i18n
+  #{metabase.query-processor metabase.api.user metabase.automagic-dashboards.populate metabase.models.setting.cache metabase.email metabase.models.collection-revision metabase.public-settings
+    metabase.driver.sql-jdbc.connection metabase.sync.sync-metadata metabase.task.send-anonymous-stats metabase.api.segment metabase.query-processor.middleware.async
+    metabase.plugins.lazy-loaded-driver metabase.models.permissions-revision metabase.metabot.websocket metabase.models.metric metabase.models.interface
+    metabase.query-processor.middleware.add-implicit-joins metabase.models.field-values metabase.async.api-response metabase.task.sync-databases metabase.models.task-history
+    metabase.cmd.reset-password metabase.metabot.instance metabase.api.embed metabase.mbql.util metabase.server metabase.api.metric metabase.models.permissions-group metabase.api.pulse
+    metabase.sync.analyze metabase.api.tiles metabase.util.schema metabase.driver metabase.models.query.permissions metabase.query-processor.middleware.annotate metabase.models.params
+    metabase.query-processor.middleware.process-userland-query metabase.api.session metabase.api.card metabase.driver.sql.query-processor metabase.integrations.ldap metabase.query-processor.store
+    metabase.integrations.slack metabase.pulse metabase.metabot metabase.query-processor.middleware.cache metabase.query-processor.middleware.add-implicit-clauses
+    metabase.query-processor.middleware.check-features metabase.middleware.security metabase.core metabase.api.automagic-dashboards metabase.async.util metabase.plugins.classloader
+    metabase.sample-data metabase.driver.common metabase.models.permissions-group-membership metabase.query-processor.middleware.mbql-to-native metabase.api.table
+    metabase.sync.sync-metadata.fields.sync-metadata metabase.plugins.initialize metabase.query-processor.middleware.results-metadata metabase.models.pulse metabase.plugins.jdbc-proxy
+    metabase.util.date metabase.query-processor.middleware.resolve-database metabase.util metabase.api.routes metabase.models.user metabase.api.task metabase.metabot.slack metabase.plugins
+    metabase.models.revision metabase.sync.field-values metabase.driver.mysql metabase.events.activity-feed metabase.query-processor.middleware.permissions metabase.automagic-dashboards.core
+    metabase.sync.util metabase.task.upgrade-checks metabase.query-processor.middleware.parameters.sql metabase.sync.sync-metadata.fields.sync-instances metabase.api.public metabase.api.database
+    metabase.sync.sync-metadata.tables metabase.sync.sync-metadata.fields.common metabase.cmd.load-from-h2 metabase.models.card metabase.email.messages metabase.db metabase.plugins.dependencies
+    metabase.task.send-pulses metabase.models.permissions metabase.driver.h2 metabase.middleware.exceptions metabase.metabot.events metabase.models.query-execution metabase.task
+    metabase.api.common.internal metabase.models.database metabase.metabot.command metabase.driver.sql-jdbc.execute metabase.automagic-dashboards.rules metabase.task.follow-up-emails
+    metabase.api.common metabase.pulse.color metabase.query-processor.middleware.resolve-driver metabase.query-processor.middleware.async-wait metabase.sync.analyze.fingerprint.fingerprinters
+    metabase.automagic-dashboards.comparison metabase.models.humanization metabase.query-processor.middleware.fetch-source-query metabase.events metabase.api.geojson
+    metabase.query-processor.middleware.binning metabase.db.migrations metabase.util.encryption metabase.models.dashboard},
+  stencil.loader #{metabase.email.messages},
+  metabase.query-processor.middleware.cache-backend.interface #{metabase.query-processor.middleware.cache metabase.query-processor.middleware.cache-backend.db},
+  clojure.string
+  #{metabase.automagic-dashboards.populate metabase.driver.sql-jdbc.sync metabase.logger metabase.query-processor.util metabase.public-settings metabase.config metabase.util.infer-spaces
+    metabase.util.ssh metabase.api.embed metabase.mbql.util metabase.models.revision.diff metabase.server metabase.models.permissions-group metabase.util.schema metabase.driver
+    metabase.query-processor.middleware.annotate metabase.cmd.endpoint-dox metabase.driver.sql.query-processor metabase.integrations.ldap metabase.mbql.schema.helpers metabase.middleware.security
+    metabase.middleware.util metabase.sync.sync-metadata.fks metabase.sample-data metabase.sync.sync-metadata.metabase-metadata metabase.util.honeysql-extensions
+    metabase.sync.sync-metadata.fields.sync-metadata metabase.api.search metabase.models.pulse metabase.util.stats metabase.cmd.driver-methods metabase.models.field metabase.util
+    metabase.sync.analyze.classifiers.name metabase.models.user metabase.plugins metabase.driver.mysql metabase.cmd metabase.automagic-dashboards.core metabase.sync.util
+    metabase.query-processor.middleware.parameters.sql metabase.api.database metabase.sync.sync-metadata.tables metabase.sync.sync-metadata.fields.common metabase.cmd.load-from-h2 metabase.db
+    metabase.models.permissions metabase.driver.h2 metabase.middleware.session metabase.middleware.exceptions metabase.api.collection metabase.util.cron metabase.metabot.events metabase.task
+    metabase.api.common.internal metabase.metabot.command metabase.automagic-dashboards.rules metabase.api.common metabase.models.humanization metabase.query-processor.middleware.fetch-source-query
+    metabase.events metabase.driver.postgres metabase.db.migrations metabase.util.encryption metabase.models.dashboard},
+  metabase.driver.sql #{metabase.driver.mysql metabase.query-processor.middleware.parameters.sql},
+  clojure.data
+  #{metabase.query-processor metabase.api.segment metabase.api.metric metabase.sync.analyze.classify metabase.query-processor.middleware.parameters metabase.util metabase.models.user
+    metabase.models.revision metabase.sync.sync-metadata.tables metabase.models.permissions metabase.models.dashboard},
+  metabase.sync #{metabase.api.notify metabase.sample-data metabase.api.table},
+  clojure.walk #{metabase.mbql.util.match metabase.query-processor.middleware.results-metadata metabase.util metabase.automagic-dashboards.core metabase.db metabase.util.i18n},
+  metabase.query-processor.middleware.store #{metabase.query-processor},
+  metabase.automagic-dashboards.rules #{metabase.api.automagic-dashboards metabase.automagic-dashboards.core},
+  metabase.api.util #{metabase.api.routes},
+  metabase.api.common
+  #{metabase.api.user metabase.automagic-dashboards.populate metabase.api.notify metabase.api.revision metabase.api.ldap metabase.api.segment metabase.api.embed metabase.api.metric metabase.api.slack
+    metabase.api.pulse metabase.api.tiles metabase.models.query.permissions metabase.api.session metabase.api.card metabase.api.activity metabase.api.automagic-dashboards metabase.api.table
+    metabase.api.search metabase.api.dashboard metabase.api.task metabase.query-processor.middleware.permissions metabase.api.public metabase.api.setting metabase.api.database metabase.models.card
+    metabase.models.permissions metabase.middleware.session metabase.api.collection metabase.models.activity metabase.api.preview-embed metabase.models.database metabase.metabot.command
+    metabase.api.util metabase.related metabase.automagic-dashboards.comparison metabase.api.permissions metabase.api.geojson},
+  metabase.query-processor.middleware.cumulative-aggregations #{metabase.query-processor},
+  metabase.models.segment
+  #{metabase.query-processor.middleware.expand-macros metabase.api.segment metabase.events.notifications metabase.api.automagic-dashboards metabase.api.search metabase.events.revision
+    metabase.util.stats metabase.automagic-dashboards.core metabase.cmd.load-from-h2 metabase.models.activity metabase.related},
+  schema.utils #{metabase.query-processor.middleware.catch-exceptions metabase.util.schema},
+  clj-ldap.client #{metabase.integrations.ldap},
+  yaml.core #{metabase.plugins metabase.automagic-dashboards.rules},
+  metabase.query-processor.middleware.resolve-driver #{metabase.query-processor},
+  metabase.related #{metabase.api.segment metabase.api.metric metabase.api.card metabase.api.table metabase.api.dashboard metabase.automagic-dashboards.core metabase.automagic-dashboards.comparison},
+  environ.core #{metabase.config metabase.plugins metabase.util.encryption},
+  metabase.api.email #{metabase.api.routes},
+  metabase.models.common #{metabase.public-settings},
+  metabase.query-processor.middleware.async-wait #{metabase.query-processor},
+  dk.ative.docjure.spreadsheet #{metabase.util.export},
+  metabase.sync.analyze.fingerprint.fingerprinters #{metabase.sync.analyze.fingerprint.insights metabase.sync.analyze.query-results},
+  metabase.automagic-dashboards.comparison #{metabase.api.automagic-dashboards},
+  metabase.query-processor.middleware.desugar #{metabase.query-processor},
+  toucan.hydrate
+  #{metabase.api.user metabase.api.segment metabase.models.metric metabase.api.metric metabase.api.pulse metabase.models.params metabase.api.card metabase.api.activity
+    metabase.query-processor.middleware.add-dimension-projections metabase.api.table metabase.models.pulse metabase.models.field metabase.api.dashboard metabase.models.dashboard-card
+    metabase.models.revision metabase.api.public metabase.api.database metabase.api.collection metabase.api.permissions metabase.models.dashboard},
+  metabase.setup #{metabase.core},
+  metabase.models.humanization
+  #{metabase.query-processor.middleware.annotate metabase.util.stats metabase.models.field metabase.sync.sync-metadata.fields.sync-instances metabase.sync.sync-metadata.tables
+    metabase.db.migrations},
+  metabase.query-processor.middleware.wrap-value-literals #{metabase.query-processor},
+  metabase.api.permissions #{metabase.api.routes},
+  metabase.models.query-cache #{metabase.query-processor.middleware.cache-backend.db metabase.util.stats},
+  metabase.query-processor.middleware.fetch-source-query #{metabase.query-processor},
+  medley.core
+  #{metabase.query-processor metabase.models.metric metabase.api.embed metabase.server metabase.util.schema metabase.query-processor.middleware.process-userland-query metabase.api.card
+    metabase.api.table metabase.models.pulse metabase.util.stats metabase.models.pulse-channel metabase.util metabase.sync.sync-metadata.fields.fetch-metadata metabase.automagic-dashboards.core
+    metabase.sync.util metabase.query-processor.middleware.parameters.sql metabase.api.public metabase.email.messages metabase.models.permissions metabase.api.common.internal metabase.api.common
+    metabase.related metabase.automagic-dashboards.comparison},
+  metabase.sync.sync-metadata.sync-timezone #{metabase.sync.sync-metadata},
+  clojure.math.numeric-tower #{metabase.util.date metabase.util metabase.sync.util metabase.query-processor.middleware.binning},
+  metabase.db.spec #{metabase.driver.mysql metabase.db metabase.driver.h2 metabase.driver.postgres},
+  metabase.events
+  #{metabase.events.dependencies metabase.events.metabot-lifecycle metabase.api.segment metabase.events.view-log metabase.api.metric metabase.api.pulse metabase.events.notifications
+    metabase.api.session metabase.api.card metabase.core metabase.models.pulse metabase.events.revision metabase.api.dashboard metabase.models.dashboard-card metabase.events.activity-feed
+    metabase.sync.util metabase.api.database metabase.models.activity metabase.events.last-login metabase.models.dashboard},
+  metabase.plugins.init-steps #{metabase.plugins.lazy-loaded-driver metabase.plugins.initialize},
+  metabase.api.geojson #{metabase.api.routes},
+  metabase.util.embed #{metabase.api.embed metabase.api.public metabase.api.preview-embed},
+  metabase.handler #{metabase.core},
+  metabase.query-processor.middleware.binning #{metabase.query-processor},
+  ring.util.response #{metabase.async.api-response metabase.middleware.session metabase.api.geojson},
+  metabase.db.migrations #{metabase.cmd.load-from-h2},
+  metabase.util.encryption #{metabase.models.interface metabase.query-processor.middleware.results-metadata},
+  metabase.models.dashboard
+  #{metabase.api.revision metabase.api.embed metabase.events.notifications metabase.api.activity metabase.api.search metabase.events.revision metabase.util.stats metabase.api.dashboard
+    metabase.events.activity-feed metabase.api.public metabase.cmd.load-from-h2 metabase.api.collection metabase.models.activity metabase.related metabase.db.migrations},
+  metabase.types #{metabase.public-settings}}}

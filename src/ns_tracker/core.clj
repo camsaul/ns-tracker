@@ -7,6 +7,7 @@
             [clojure.tools.namespace.file :refer [clojure-file?]]
             [clojure.tools.namespace.parse :refer [read-ns-decl]]
             [ns-tracker.dependency :refer [graph seq-union depend dependents remove-key]]
+            [clojure.pprint :as pprint]
             [ns-tracker.nsdeps :refer [deps-from-ns-decl]]
             [ns-tracker.parse :refer [read-in-ns-decl]]))
 
@@ -59,11 +60,22 @@
       [new-decls new-names])))
 
 (defn- add-to-dep-graph [dep-graph namespace-decls dirs]
-  (reduce (fn [g decl]
-            (let [nn (second decl)
-                  deps (deps-from-ns-decl decl dirs)]
-              (apply depend g nn deps)))
-          dep-graph namespace-decls))
+  (time
+   (reduce (fn [g decl]
+             (let [nn   (second decl)
+                   deps (deps-from-ns-decl decl dirs)]
+               (let [start-time-ms   (System/currentTimeMillis)
+                     result          (apply depend g nn deps)
+                     elapsed-time-ms (- (System/currentTimeMillis) start-time-ms)]
+                 (when (> elapsed-time-ms 1000)
+                   (println "g:") ; NOCOMMIT
+                   (pprint/pprint g)
+                   (println "nn:" nn) ; NOCOMMIT
+                   (println "deps:") ; NOCOMMIT
+                   (pprint/pprint deps)
+                   )
+                 result)))
+           dep-graph namespace-decls)))
 
 (defn- remove-from-dep-graph [dep-graph new-decls]
   (apply remove-key dep-graph (map second new-decls)))

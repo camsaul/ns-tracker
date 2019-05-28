@@ -1,6 +1,6 @@
-(defproject ns-tracker "0.3.1"
+(defproject ns-tracker "0.3.2-SNAPSHOT"
   :description "Keep track of which namespaces have been modified"
-  :dependencies [[org.clojure/clojure "1.5.1"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/java.classpath "0.2.3"]]
   :profiles
